@@ -73,7 +73,6 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-
     <FlyoutItem 
         Title="Dashboard" 
         Icon="dashboardIcon.png">
