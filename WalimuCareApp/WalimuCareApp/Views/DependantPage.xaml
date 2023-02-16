@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="WalimuCareApp.Views.DependantPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView x:Name="listOfDependants" 
+                      SeparatorColor="#FF0000"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Padding="20"                                
+                                >
+
+                                <StackLayout>                                
+                                    <Label TextColor="#FA6400"
+                                               Text="{Binding MemberNumber}"/>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <Label Text="{Binding FirstName}" 
+                                       TextColor="#2C2C2C" ></Label>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <Label Text="{Binding LastName}" 
+                                       TextColor="#2C2C2C" ></Label>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="{Binding DateOfBirth}" 
+                                       TextColor="#2C2C2C" ></Label>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="{Binding Relation}" 
+                                       TextColor="#2C2C2C" ></Label>
+                                </StackLayout>
+                             
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

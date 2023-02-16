@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalimuCareApp.Views.HospitalVisitPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="myListView"
+                      HasUnevenRows="True"
+                       
+                     >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Text="MVC No."
+                                               TextColor="#2C2C2C" />
+                                        <Label TextColor="#FA6400"
+                                               Text="{Binding mvcNumber}"/>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <Label Text="MVC Date"
+                                               TextColor="#2C2C2C" />
+                                        <Label TextColor="Black" 
+                                               Text="{Binding mvcDate}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Total"
+                                           TextColor="#2C2C2C" />
+                                    <Label  HorizontalOptions="EndAndExpand"
+                                            TextColor="#2C2C2C" 
+                                            Text="{Binding hospital}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

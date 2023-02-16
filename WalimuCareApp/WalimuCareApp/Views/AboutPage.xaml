@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalimuCareApp.Views.AboutPage"
+             xmlns:vm="clr-namespace:WalimuCareApp.ViewModels"
+             Title="Walimu Care">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" Padding="10" >
+
+        <Frame BackgroundColor="White" CornerRadius="20"   Grid.Row="0">
+            <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto" VerticalOptions="CenterAndExpand">
+                <Label Grid.Column="0" Grid.Row="0" Text="Primary School" FontAttributes="Bold" FontSize="16" TextColor="#08457E"  ></Label>
+                <Label Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand" TextColor="#08457E" 
+             FontSize="20"  ></Label>
+                <Label Grid.Column="2" Grid.Row="0" Text="Time Table" TextColor="Gray"  ></Label>
+                <Label Grid.Column="3" Grid.Row="0" TextColor="#08457E" 
+                FontSize="20"  ></Label>
+                <Label Grid.Column="4" Grid.Row="0" Text="H.W." TextColor="Gray"  ></Label>
+            </Grid>
+        </Frame>
+
+        <Frame CornerRadius="10" Grid.Row="1" BackgroundColor="White" >
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,Auto" >
+                <Label Grid.Row="0" Grid.Column="0" TextColor="#08457E"   FontSize="20"  ></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text="Xamarin UI Design" TextColor="#202020"></Label>
+                <Label Grid.Row="1" Grid.Column="0" TextColor="#08457E"   FontSize="20"  ></Label>
+                <Label Grid.Row="1" Grid.Column="1" Text="Class: V" TextColor="#202020"></Label>
+                <Label Grid.Row="2" Grid.Column="0" TextColor="#08457E"   FontSize="20"  ></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="Class Tearcher: Monali Kundre" TextColor="#202020"></Label>
+            </Grid>
+        </Frame>
+
+
+        <Grid  Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*" RowSpacing="10" ColumnSpacing="10">
+            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                <Grid RowDefinitions="Auto,Auto" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label  Grid.Row="0"  HorizontalOptions="Center" TextColor="#08457E" 
+              ></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" Text="Syllabus" VerticalOptions="Start"  
+               TextColor="#202020"></Label>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                <Grid RowDefinitions="Auto,Auto" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label  Grid.Row="0"  HorizontalOptions="Center" TextColor="#08457E" 
+                ></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" Text="Test" VerticalOptions="Start"  
+               TextColor="#202020"></Label>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="0" Grid.Column="2" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                <Grid RowDefinitions="Auto,Auto" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label  Grid.Row="0"  HorizontalOptions="Center" TextColor="#08457E" 
+               ></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" Text="Notice" VerticalOptions="Start"  
+               TextColor="#202020"></Label>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                <Grid RowDefinitions="Auto,Auto" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label  Grid.Row="0"  HorizontalOptions="Center" TextColor="#08457E" 
+               ></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" Text="Fees" VerticalOptions="Start"  
+               TextColor="#202020"></Label>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                <Grid RowDefinitions="Auto,Auto" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label  Grid.Row="0"  HorizontalOptions="Center" TextColor="#08457E" 
+               ></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" Text="Gallery" VerticalOptions="Start"  
+               TextColor="#202020"></Label>
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                <Grid RowDefinitions="Auto,Auto" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label  Grid.Row="0"  HorizontalOptions="Center" TextColor="#08457E" 
+               ></Label>
+                    <Label Grid.Row="1" HorizontalOptions="Center" Text="Profile" VerticalOptions="Start"  
+               TextColor="#202020"></Label>
+                </Grid>
+            </Frame>
+        </Grid>
+        <Frame Grid.Row="3"  CornerRadius="20" >
+            <StackLayout  HorizontalOptions="FillAndExpand">
+                <Image Source="https://graphicsfamily.com/wp-content/uploads/2020/11/Professional-Web-Banner-AD-in-Photoshop-scaled.jpg" VerticalOptions="FillAndExpand" HeightRequest="110" HorizontalOptions="FillAndExpand" Aspect="Fill"></Image>
+            </StackLayout>
+        </Frame>
+        <Frame Grid.Row="4" CornerRadius="10" BackgroundColor="#08457E">
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="10">
+                <Label Grid.Row="0" Grid.Column="0" Text="Learned Phase" TextColor="#ffffff"></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text="12" FontAttributes="Bold" TextColor="#ffffff"></Label>
+                <Label Grid.Row="1" Grid.Column="0" Text="Phase left to learn" TextColor="#ffffff"></Label>
+                <Label Grid.Row="1" Grid.Column="1" Text="36" FontAttributes="Bold" TextColor="#ffffff"></Label>
+                <Label Grid.Row="2" Grid.Column="0" Text="Total Learning Time" TextColor="#ffffff"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="1.5h" FontAttributes="Bold" TextColor="#ffffff"></Label>
+            </Grid>
+        </Frame>
+
+
+    </Grid>
+</ContentPage>
