@@ -1,41 +1,149 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WalimuCareApp.Views.HospitalVisitPage">
+             x:Class="WalimuCareApp.Views.HospitalVisitPage"
+             Title="Hospital Visits"
+             >
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout   Padding="5">
+            
             <ListView x:Name="myListView"
-                      HasUnevenRows="True"
-                       
+                      HasUnevenRows="True"                       
                      >
                 <ListView.ItemTemplate >
-                    <DataTemplate>
+
+                    <DataTemplate >
                         <ViewCell>
-                            <StackLayout Padding="20">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout>
-                                        <Label Text="MVC No."
-                                               TextColor="#2C2C2C" />
-                                        <Label TextColor="#FA6400"
-                                               Text="{Binding mvcNumber}"/>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="EndAndExpand">
-                                        <Label Text="MVC Date"
-                                               TextColor="#2C2C2C" />
-                                        <Label TextColor="Black" 
-                                               Text="{Binding mvcDate}"/>
-                                    </StackLayout>
+                            <Frame
+                    Margin="5"
+                    Padding="0"
+                    CornerRadius="1"
+                    HasShadow="True">
+                                <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+
+                                    <BoxView BackgroundColor="{x:StaticResource PrimaryLight1}" WidthRequest="4" />
+
+                                    <Grid
+                            Padding="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.4*" />
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="0.1*" />
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Hospital Name"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding hospitalName}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+
+
+                                        <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Visit Date"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding mvcDate , StringFormat='{0:MMM dd, yyyy}'}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+                                        <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Department"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding department}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+                                        <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="MVC Number"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding mvcNumber}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+
+                                        <!--<Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Claim Amount"
+                                TextColor="{x:StaticResource Primary}" />-->
+                                        <!--<Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                TextColor="{x:StaticResource Secondary}">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ksh. " />
+                                        <Span Text="{Binding total, StringFormat='{}{0:N0}'}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+
+
+
+
+                                    </Grid>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Total"
-                                           TextColor="#2C2C2C" />
-                                    <Label  HorizontalOptions="EndAndExpand"
-                                            TextColor="#2C2C2C" 
-                                            Text="{Binding hospital}"/>
-                                </StackLayout>
-                            </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
+
+
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>

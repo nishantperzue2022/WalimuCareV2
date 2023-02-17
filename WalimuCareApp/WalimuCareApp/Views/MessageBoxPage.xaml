@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<rg:PopupPage
+    xmlns:rg="http://rotorgames.com"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalimuCareApp.Views.MessageBoxPage">
+
+    <Grid HeightRequest="265" VerticalOptions="End">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.RowSpan="2" HeightRequest="225" VerticalOptions="End" CornerRadius="30" Padding="20.0" BackgroundColor="White">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="dependantsIcon.png" HorizontalOptions="Center" VerticalOptions="Start" Aspect="Fill" HeightRequest="80" WidthRequest="80" Margin="0,-40,0,0"></Image>
+                <StackLayout Orientation="Vertical" Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Congratulations!" FontSize="20" FontAttributes="Bold" TextColor="#E10555" HorizontalTextAlignment="Center"></Label>
+                    <Label TextColor="#363636" FontSize="15" Text="You have successfully logged in"></Label>
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+        <Button Grid.Row="1" Text="Continue" TextColor="White" HeightRequest="45" BackgroundColor="#E10555" Clicked="Button_Clicked"></Button>
+    </Grid>
+</rg:PopupPage>

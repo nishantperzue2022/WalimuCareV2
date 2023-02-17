@@ -1,42 +1,38 @@
-﻿
-using Plugin.Toast;
+﻿using Rg.Plugins.Popup.Extensions;
 using System;
-
-using WalimuCareApp.Repositories.DependantsModule;
-
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WalimuCareApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DependantPage : ContentPage
+    public partial class TelemedicinePage : ContentPage
     {
-        public DependantPage()
+        public ObservableCollection<Card> listDetails { get; set; }
+        public TelemedicinePage()
         {
-            InitializeComponent();           
-        }      
+            InitializeComponent();
 
-        private async void GetDependants()
-        {
-            try
-            {
-                var data = await DependantRepository.GetList();
-
-                if (data == null)
-                {
-                   await DisplayAlert("Oops !", "You have not registered any dependant", "Ok");
-                }
-
-                listOfDependants.ItemsSource = data;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            GetDependants();
         }
 
+        private void GetDependants()
+        {
+            listDetails = new ObservableCollection<Card>()
+            {
+                new Card() { ImgIcon="dependantsIcon.png",Name="IT Department"},
+                new Card() { ImgIcon="dependantsIcon.png",Name="IT Biological Science"},
+                new Card() { ImgIcon="dependantsIcon.png",Name="IT Education"},
+                new Card() { ImgIcon="dependantsIcon.png",Name="IT Accounts"}
+            };
 
+            BindingContext = this;
+        }
 
         protected override void OnAppearing()
         {
@@ -55,13 +51,22 @@ namespace WalimuCareApp.Views
 
             //};
 
-           GetDependants();
+            GetDependants();
         }
 
-        private void msgErro_Clicked(object sender, EventArgs e)
-        {
-            CrossToastPopUp.Current.ShowToastError("There are no dependnats");
 
+
+        public class Card
+        {
+            public string ImgIcon { get; set; }
+            public string Name { get; set; }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var pop = new MessageBoxPage();
+
+            App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
         }
     }
 }

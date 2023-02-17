@@ -12,6 +12,7 @@ namespace WalimuCareApp.Models
         public string FirstName { get; set; }
         public object MiddleName { get; set; }
         public string LastName { get; set; }
+        public string FullName => FirstName + " " + LastName;
         public string Gender { get; set; }
         public string DocumentTypeCode { get; set; }
         public string DocumentNumber { get; set; }
@@ -31,6 +32,49 @@ namespace WalimuCareApp.Models
         public DateTime CreateDate { get; set; }
         public string SuspensionRemarks { get; set; }
         public string DeleteRemarks { get; set; }
+        public int Age
+        {
+            get
+            {
+                int age = DateTime.Now.Subtract(DateOfBirth).Days;
+
+                age = (age / 365);
+
+                return age;
+
+            }
+        }
+
+        public string StatusDescription
+        {
+            get
+            {
+                var status = Status;
+
+                if (status == 0)
+                {
+                    var data = "Awaiting Approval";
+
+                    return data;
+                }
+                if (status == 1)
+                {
+                    var data = "Active";
+
+                    return data;
+                }
+                if (status == 2)
+                {
+                    var data = "Suspended";
+
+                    return data;
+                }
+                var k = "Deleted";
+
+                return k;
+            }
+        }
+
     }
-    
+
 }

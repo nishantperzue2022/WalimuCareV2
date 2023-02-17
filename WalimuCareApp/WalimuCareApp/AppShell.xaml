@@ -141,15 +141,16 @@
         Title="Telemedicine" 
         Icon="icon_feed.png">
         <ShellContent 
-            Route="ItemsPage" 
-            ContentTemplate="{DataTemplate local:ItemsPage}" />
+            Route="TelemedicinePage" 
+            ContentTemplate="{DataTemplate local:TelemedicinePage}" />
     </FlyoutItem>
 
     <FlyoutItem 
         Title="Report Issues/ Feedback" 
         Icon="icon_feed.png">
         <ShellContent 
-            Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+            Route="ComplaintsPage" 
+            ContentTemplate="{DataTemplate local:ComplaintsPage}" />
     </FlyoutItem>
 
     <FlyoutItem 
@@ -180,8 +181,8 @@
         Title="Emergency Contacts" 
         Icon="icon_feed.png">
         <ShellContent 
-            Route="ItemsPage" 
-            ContentTemplate="{DataTemplate local:ItemsPage}" />
+            Route="ContactUsPage" 
+            ContentTemplate="{DataTemplate local:ContactUsPage}" />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

@@ -1,50 +1,167 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
+             Title="Dependants"
              x:Class="WalimuCareApp.Views.DependantPage">
+
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout   Padding="5">
 
-            <ListView x:Name="listOfDependants" 
-                      SeparatorColor="#FF0000"
-                      HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+            <ListView x:Name="listOfDependants"
+                      
+                      HasUnevenRows="True"                       
+                     >
+                <ListView.ItemTemplate >
+
+                    <DataTemplate >
                         <ViewCell>
-                            <StackLayout
-                                Padding="20"                                
-                                >
+                            <Frame
+                    Margin="5"
+                    Padding="0"
+                    CornerRadius="1"
+                    HasShadow="True">
+                                <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
 
-                                <StackLayout>                                
-                                    <Label TextColor="#FA6400"
-                                               Text="{Binding MemberNumber}"/>
-                                </StackLayout>
+                                    <BoxView BackgroundColor="{x:StaticResource PrimaryLight1}" WidthRequest="4" />
 
-                                <StackLayout>
-                                    <Label Text="{Binding FirstName}" 
-                                       TextColor="#2C2C2C" ></Label>
-                                </StackLayout>
+                                    <Grid
+                            Padding="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
 
-                                <StackLayout>
-                                    <Label Text="{Binding LastName}" 
-                                       TextColor="#2C2C2C" ></Label>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.4*" />
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="0.1*" />
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Name"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding FullName}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+                                        <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Relation"
+                                TextColor="{x:StaticResource Primary}" />
+                                        
+                                        
+                                        <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding Relation}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+                                        <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Gender"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding Gender}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+                                        <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Age"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding Age}"
+                                TextColor="{x:StaticResource Secondary}" />
+                                        
+                                        
+                                        <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Status"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding StatusDescription}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+                                        <!--<Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Claim Amount"
+                                TextColor="{x:StaticResource Primary}" />-->
+                                        <!--<Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                TextColor="{x:StaticResource Secondary}">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ksh. " />
+                                        <Span Text="{Binding total, StringFormat='{}{0:N0}'}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+
+
+
+
+                                    </Grid>
                                 </StackLayout>
-                                <StackLayout>
-                                    <Label Text="{Binding DateOfBirth}" 
-                                       TextColor="#2C2C2C" ></Label>
-                                </StackLayout>
-                                <StackLayout>
-                                    <Label Text="{Binding Relation}" 
-                                       TextColor="#2C2C2C" ></Label>
-                                </StackLayout>
-                             
-                            </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
 
+
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

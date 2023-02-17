@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -9,6 +10,7 @@ using WalimuCareApp.Repositories.HospitalVisitModule;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static WalimuCareApp.Views.TelemedicinePage;
 
 namespace WalimuCareApp.Views
 {
@@ -18,17 +20,17 @@ namespace WalimuCareApp.Views
         public HospitalVisitPage()
         {
             InitializeComponent();
-          
+
         }
         private async void GetHospitalVisits()
         {
             try
-            {           
+            {
                 var data = await HospitalvisitRepository.GetList();
 
-                var list = data.listOfVisits.OrderByDescending(x=>x.mvcDate).Take(6).ToList();
+                var list = data.listOfVisits.OrderByDescending(x => x.mvcDate).Take(6).ToList();
 
-                if(list == null)
+                if (list == null)
                 {
                     await DisplayAlert("Oops !", "Something went wrong", "Cancel");
                 }

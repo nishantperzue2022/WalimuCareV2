@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WalimuCareApp.Views.Covid19Page">
+             x:Class="WalimuCareApp.Views.Covid19Page"
+              Title="Covid 19"
+             >
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Label
+                Margin="10,10,10,0"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="COVID-19 is an infectious disease caused by a newly discovered coronavirus."
+                TextColor="{StaticResource Secondary}"
+                VerticalOptions="StartAndExpand" />
+
+            <ListView
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemsSource="{Binding MyCovid19}"
+                RefreshCommand="{Binding GetCovid19ListCommand}"
+                SelectionMode="None"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10" Padding="0">
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
+
+
+            <!--<Button
+                Margin="10"
+                Command="{Binding Covid19SymptomsCheckerCommand}"
+                CornerRadius="20"
+                Style="{StaticResource ButtonFilledPrimary}"
+                Text="Try Covid 19 Symptoms Checker" />-->
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

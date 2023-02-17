@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalimuCareApp.Views.TelemedicinePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"             
+                HorizontalOptions="Center" />
+            <ListView
+                ItemsSource="{Binding listDetails}"
+                BackgroundColor="White"
+                HasUnevenRows="True"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="4" Margin="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".5*" ></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame IsClippedToBounds="True" Grid.Row="0" Grid.Column="0" HasShadow="True" Padding="0" BackgroundColor="White">
+                                    <StackLayout Orientation="Horizontal">
+                                        <BoxView VerticalOptions="Center" HeightRequest="90" WidthRequest="6"></BoxView>
+                                        <Image Source="{Binding ImgIcon}" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                        <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame IsClippedToBounds="True" Grid.Row="0" Grid.Column="1" HasShadow="True" Padding="0" BackgroundColor="White">
+                                    <StackLayout Orientation="Horizontal">
+                                        <BoxView VerticalOptions="Center" HeightRequest="90" WidthRequest="6"></BoxView>
+                                        <Image Source="{Binding ImgIcon}" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                        <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                                    </StackLayout>
+                                </Frame>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Image Source="bg" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"></Image>
+            <Button Text="Show Popup" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" Clicked="Button_Clicked"></Button>
+            
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
