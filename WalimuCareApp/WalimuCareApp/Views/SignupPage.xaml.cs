@@ -21,7 +21,7 @@ namespace WalimuCareApp.Views
         }
         private async void TapSignup_Tapped(object sender, EventArgs e)
         {
-            var response = await UserManagerRepository.RegisterUser(txtMemberNo.Text, txtFirstName.Text,txtLastName.Text,txtEmail.Text,txtPassword.Text);
+            var response = await UserManagerRepository.RegisterUser(txtMemberNo.Text, txtPhoneNo.Text,txtPassword.Text);
 
             if (response)
             {
@@ -35,10 +35,6 @@ namespace WalimuCareApp.Views
 
             }
         }
-
-        private async void SpanSignin_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new LoginPage());
-        }
+               
     }
 }

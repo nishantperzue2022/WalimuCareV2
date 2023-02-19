@@ -11,19 +11,16 @@ namespace WalimuCareApp.Repositories.UserManagerModule
 {
     public static class UserManagerRepository
     {
-        public static async Task<bool> RegisterUser(string MemberNo, string FirstName, string LastName, string email, string password)
+        public static async Task<bool> RegisterUser(string MemberNo, string PhoneNo,string password)
         {
             try
             {
                 var register = new Register()
                 {
-                    Email = email,
-
+                   
                     MemberNumber = MemberNo,
 
-                    FirstName = FirstName,
-
-                    LastName = LastName,
+                    PhoneNumber = PhoneNo,                
 
                     Password = password,
                 };
@@ -53,13 +50,13 @@ namespace WalimuCareApp.Repositories.UserManagerModule
                 return false;
             }
         }
-        public static async Task<bool> Login(string email, string password)
+        public static async Task<bool> Login(string memberNumber, string password)
         {
             try
             {
                 var login = new Login()
                 {
-                    Email = email,
+                    MemberNumber = memberNumber,
 
                     Password = password,
                 };
@@ -84,9 +81,11 @@ namespace WalimuCareApp.Repositories.UserManagerModule
 
                 Preferences.Set("userId", result.user_Id);
 
-                Preferences.Set("userName", result.user_name);
+                Preferences.Set("memberName", result.user_name);
 
                 Preferences.Set("tokenExpirationTime", result.expiration_Time);
+
+                Preferences.Set("password", password);
 
                 Preferences.Set("currentTime", DateTimeOffset.Now.ToUnixTimeSeconds());
 

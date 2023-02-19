@@ -16,6 +16,23 @@ namespace WalimuCareApp.Models
         public string hospitalName { get; set; }
         public string remarks { get; set; }
         public DateTime mvcDate { get; set; }
-    }
+		public string StatusDescription
+		{
+			get
+			{
+				var status = approvalStatus;
+
+				if (status == string.Empty)
+				{
+					var data = "In Progress";
+
+					return data;
+				}			
+				var k = status;
+
+				return k;
+			}
+		}
+	}
 
 }

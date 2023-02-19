@@ -4,68 +4,42 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-
+             BackgroundColor="white"
              x:Class="WalimuCareApp.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <Image Source="avator.png" WidthRequest="180" HeightRequest="180" ></Image>
+            <Entry x:Name="txtMemberNo" Placeholder="Member No" TextColor="Black" PlaceholderColor="Gray"></Entry>
+            <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True" TextColor="Black" PlaceholderColor="Gray"></Entry>
+            <Button
+                VerticalOptions="Center"
+                Text="Login"
+                TextColor="Black"
+                BackgroundColor="{x:StaticResource Primary}"     
+                BorderWidth="1.5"
+                CornerRadius="50"  
+                BorderColor="ForestGreen"
+                Clicked="Button_Clicked"
+                 
+                >
+            </Button>
 
-        <StackLayout BackgroundColor="White">
-            <StackLayout Orientation="Horizontal">
-                <Image Source="leftarrow"
-                       HeightRequest="40"
-                       WidthRequest="40"
-                       Margin="20"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="shape.png"
-                       HorizontalOptions="EndAndExpand"
-                       HeightRequest="200" />
-            </StackLayout>
-            <Label Text="Login"
-                   FontAttributes="Bold"
-                   FontSize="Title"
-                   TextColor="#2C2C2C"
-                   Margin="20,20,20,0" />
-            <Label Text="Please Sign in to continue"
-                FontSize="Medium"
-                   TextColor="LightGray"
-                   Margin="20,0,20,20" />
-            <Entry Placeholder="Email"
-                   Margin="20,10,20,10"
-                   x:Name="EntEmail"
-                   Keyboard="Email" />
-            <Entry Placeholder="Password"
-                   Margin="20,10,20,10"
-                   x:Name="EntPassword"
-                   IsPassword="True" />
-            <Grid Margin="20,40,20,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5.5*" />
-                    <ColumnDefinition Width="4.5*" />
-                </Grid.ColumnDefinitions>
-                <Frame BackgroundColor="#FA6400"
-                       Grid.Column="1"
-                       Padding="15"
-                       CornerRadius="35">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="LOGIN"
-                               HorizontalOptions="EndAndExpand"
-                               FontSize="Medium"
-                               VerticalOptions="Center"
-                               TextColor="White" />
-                        <Image Source="rightarrow.png"
-                               HorizontalOptions="CenterAndExpand"
-                               HeightRequest="30" />
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="TapLogin" Tapped="TapLogin_Tapped"     />
-                    </Frame.GestureRecognizers>
-                </Frame>
-            </Grid>
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Don't have an account ? " TextColor="Green"></Span>
+                        <Span Text="Register" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" >
+
+                    </TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

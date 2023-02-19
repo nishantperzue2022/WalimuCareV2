@@ -4,8 +4,12 @@
              x:Class="WalimuCareApp.Views.AboutPage"
              xmlns:vm="clr-namespace:WalimuCareApp.ViewModels"
              Title="Walimu Care">
-
+ 
+    
+    
+    
     <ContentPage.BindingContext>
+        
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
 

@@ -4,7 +4,7 @@ namespace WalimuCareApp.Utils
 {
     public static class MaklAPI
     {
-        public static string ApiUrl = "https://collaboration.makl-psms.com/";
-       // public static string ApiUrl = "https://localhost:7107/";
+        //public static string ApiUrl = "https://collaboration.makl-psms.com/";
+        public static string ApiUrl = "https://e9b4-154-70-3-144.eu.ngrok.io/";
     }
 }

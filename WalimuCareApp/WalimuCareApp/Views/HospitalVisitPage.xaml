@@ -108,8 +108,23 @@
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="{Binding mvcNumber}"
+                                TextColor="{x:StaticResource Secondary}" />  
+                                        
+                                        
+                                        <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Status"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding StatusDescription}"
                                 TextColor="{x:StaticResource Secondary}" />
-
 
 
                                         <!--<Label

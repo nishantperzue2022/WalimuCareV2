@@ -14,7 +14,7 @@
 
         <Frame Grid.RowSpan="2" HeightRequest="225" VerticalOptions="End" CornerRadius="30" Padding="20.0" BackgroundColor="White">
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Image Source="dependantsIcon.png" HorizontalOptions="Center" VerticalOptions="Start" Aspect="Fill" HeightRequest="80" WidthRequest="80" Margin="0,-40,0,0"></Image>
+                <!--<Image Source="dependantsIcon.png" HorizontalOptions="Center" VerticalOptions="Start" Aspect="Fill" HeightRequest="80" WidthRequest="80" Margin="0,-40,0,0"></Image>-->
                 <StackLayout Orientation="Vertical" Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
                     <Label Text="Congratulations!" FontSize="20" FontAttributes="Bold" TextColor="#E10555" HorizontalTextAlignment="Center"></Label>
                     <Label TextColor="#363636" FontSize="15" Text="You have successfully logged in"></Label>

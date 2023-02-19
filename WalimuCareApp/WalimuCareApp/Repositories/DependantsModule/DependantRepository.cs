@@ -9,6 +9,7 @@ using WalimuCareApp.Models;
 using WalimuCareApp.Utils;
 using static WalimuCareApp.Models.Dependant;
 using System.Reflection;
+using Xamarin.Essentials;
 
 namespace WalimuCareApp.Repositories.DependantsModule
 {
@@ -18,13 +19,15 @@ namespace WalimuCareApp.Repositories.DependantsModule
         {
             try
             {
+                var memberNo = Preferences.Get("memberName", string.Empty);
+
                 var client = new HttpClient();
 
                 client.DefaultRequestHeaders.Accept.Clear();
 
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage getData = await client.GetAsync(MaklAPI.ApiUrl + "api/Dependants/MemberNo?MemberNo=20133");
+                HttpResponseMessage getData = await client.GetAsync(MaklAPI.ApiUrl + "api/Dependants/MemberNo?MemberNo=" + memberNo + "");
 
                 if (getData.IsSuccessStatusCode)
                 {

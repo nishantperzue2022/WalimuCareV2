@@ -3,7 +3,7 @@ using Plugin.Toast;
 using System;
 
 using WalimuCareApp.Repositories.DependantsModule;
-
+using WalimuCareApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +14,8 @@ namespace WalimuCareApp.Views
     {
         public DependantPage()
         {
-            InitializeComponent();           
+            InitializeComponent();
+
         }      
 
         private async void GetDependants()
