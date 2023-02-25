@@ -51,9 +51,6 @@ namespace WalimuCareApp.Views
                 await DisplayAlert("Oops !", "Something went wrong", "Cancel");
 
             }
-
-
-
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -63,39 +60,39 @@ namespace WalimuCareApp.Views
 
 
 
-        //private async void TapLogin_Tapped(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        //var response = await UserManagerRepository.Login(txtMemberNo.Text, EntPassword.Text);
+		//private async void TapLogin_Tapped(object sender, EventArgs e)
+		//{
+		//    try
+		//    {
+		//        //var response = await UserManagerRepository.Login(txtMemberNo.Text, EntPassword.Text);
 
-        //        //Preferences.Set("email", txtMemberNo.Text);
+		//        //Preferences.Set("email", txtMemberNo.Text);
 
-        //        //Preferences.Set("password", EntPassword.Text);
+		//        //Preferences.Set("password", EntPassword.Text);
 
-        //        //if (response == true)
-        //        //{
-        //        //    //await Task.Delay(2000);
+		//        //if (response == true)
+		//        //{
+		//        //    //await Task.Delay(2000);
 
-        //        //    await Application.Current.MainPage.Navigation.PopAsync();
+		//        //    await Application.Current.MainPage.Navigation.PopAsync();
 
-        //        //    Application.Current.MainPage = new AppShell();
+		//        //    Application.Current.MainPage = new AppShell();
 
-        //        //}
-        //        //else
-        //        //{
-        //        //    await DisplayAlert("Oops !", "Something went wrong", "Cancel");
-        //        //}
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
+		//        //}
+		//        //else
+		//        //{
+		//        //    await DisplayAlert("Oops !", "Something went wrong", "Cancel");
+		//        //}
+		//    }
+		//    catch (Exception ex)
+		//    {
+		//        Console.WriteLine(ex.Message);
 
-        //        await DisplayAlert("Oops !", "Something went wrong", "Cancel");
+		//        await DisplayAlert("Oops !", "Something went wrong", "Cancel");
 
-        //    }
-        //}
+		//    }
+		//}
 
 
-    }
+	}
 }
