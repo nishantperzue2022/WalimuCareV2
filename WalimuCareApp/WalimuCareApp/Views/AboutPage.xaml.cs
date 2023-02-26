@@ -25,20 +25,20 @@ namespace WalimuCareApp.Views
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);		
+				Console.WriteLine(ex.Message);
 			}
-		}		
+		}
 
 		private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
 		{
 			try
 			{
 				await Navigation.PushAsync(new HospitalVisitPage());
-	
+
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);	
+				Console.WriteLine(ex.Message);
 
 				await DisplayAlert("Oops !", "Something went wrong please try again", "Ok");
 			}

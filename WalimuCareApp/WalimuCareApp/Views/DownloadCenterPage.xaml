@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalimuCareApp.Views.DownloadCenterPage"
+                Title="My Download Center"
+    BackgroundColor="#E1E0E6"
+             
+             >
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <StackLayout
+                Margin="10"
+                Padding="0"
+                BackgroundColor="White"
+                Spacing="0">
+
+                <StackLayout Margin="15" Orientation="Horizontal">
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource Primary}"
+                        Text="Download Policy Document"
+                        TextColor="#3B3B3B"
+                        VerticalOptions="Center" />
+
+                    <Image
+                        HeightRequest="15"
+                        HorizontalOptions="EndAndExpand"
+                        Source="nextblack.png"
+                        VerticalOptions="Center" />
+
+                </StackLayout>
+
+                <BoxView
+                    Margin="0"
+                    BackgroundColor="#E1E0E6"
+                    HeightRequest="1.5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start" />
+
+
+                <StackLayout Margin="15" Orientation="Horizontal">
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                    </StackLayout.GestureRecognizers>
+
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource Primary}"
+                        Text="Download All E-Cards"
+                        TextColor="#3B3B3B"
+                        VerticalOptions="Center" />
+
+                    <Image
+                        HeightRequest="15"
+                        HorizontalOptions="EndAndExpand"
+                        Source="nextblack.png"
+                        VerticalOptions="Center" />
+                </StackLayout>
+
+                <BoxView
+                    Margin="0"
+                    BackgroundColor="#E1E0E6"
+                    HeightRequest="1.5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start" />
+
+
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
