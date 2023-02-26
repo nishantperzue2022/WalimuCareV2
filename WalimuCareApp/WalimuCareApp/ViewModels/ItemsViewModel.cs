@@ -18,7 +18,9 @@ namespace WalimuCareApp.ViewModels
         public ItemsViewModel()
         {
             Title = "Browse";
+
             Items = new ObservableCollection<Item>();
+
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             ItemTapped = new Command<Item>(OnItemSelected);
@@ -51,6 +53,7 @@ namespace WalimuCareApp.ViewModels
         public void OnAppearing()
         {
             IsBusy = true;
+
             SelectedItem = null;
         }
 
@@ -72,6 +75,7 @@ namespace WalimuCareApp.ViewModels
         async void OnItemSelected(Item item)
         {
             if (item == null)
+
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
