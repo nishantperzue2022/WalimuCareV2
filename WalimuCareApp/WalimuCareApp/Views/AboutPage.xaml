@@ -257,7 +257,9 @@
                                         VerticalOptions="FillAndExpand">
 
                                         <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding GoToManageDependants}" />
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                  Tapped="TapGestureRecognizer_Tapped"
+                                                                  />
                                         </StackLayout.GestureRecognizers>
 
                                         <yummy:PancakeView
@@ -289,7 +291,7 @@
                                             FontSize="Small"
                                             HorizontalOptions="CenterAndExpand"
                                             Style="{StaticResource MedBookLabelNormal}"
-                                            Text="My Dependants"
+                                            Text="My Dependants"                                           
                                             TextColor="{StaticResource Secondary}" />
                                     </StackLayout>
 
@@ -342,7 +344,8 @@
                                         VerticalOptions="FillAndExpand">
 
                                         <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding GoToTrackClaims}" />
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                  Tapped="TapGestureRecognizer_Tapped_1"/>
                                         </StackLayout.GestureRecognizers>
 
                                         <yummy:PancakeView

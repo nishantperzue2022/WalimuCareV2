@@ -15,9 +15,33 @@ namespace WalimuCareApp.Views
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
+		}
+		private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+		{
+			try
+			{
+				await Navigation.PushAsync(new DependantPage());
 
-			BindingContext = DependencyService.Get<HomePageViewModel>();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);		
+			}
+		}		
 
+		private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+		{
+			try
+			{
+				await Navigation.PushAsync(new HospitalVisitPage());
+	
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);	
+
+				await DisplayAlert("Oops !", "Something went wrong please try again", "Ok");
+			}
 		}
 	}
 }
