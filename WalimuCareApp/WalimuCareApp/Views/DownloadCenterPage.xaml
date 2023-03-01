@@ -3,13 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WalimuCareApp.Views.DownloadCenterPage"
                 Title="My Download Center"
-    BackgroundColor="#E1E0E6"
-             
+    BackgroundColor="#E1E0E6"             
              >
     <ContentPage.Content>
 
         <StackLayout>
-
             <StackLayout
                 Margin="10"
                 Padding="0"
@@ -17,7 +15,6 @@
                 Spacing="0">
 
                 <StackLayout Margin="15" Orientation="Horizontal">
-
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </StackLayout.GestureRecognizers>
@@ -35,7 +32,6 @@
                         HorizontalOptions="EndAndExpand"
                         Source="nextblack.png"
                         VerticalOptions="Center" />
-
                 </StackLayout>
 
                 <BoxView
@@ -44,7 +40,6 @@
                     HeightRequest="1.5"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Start" />
-
 
                 <StackLayout Margin="15" Orientation="Horizontal">
 
@@ -58,7 +53,8 @@
                         Style="{StaticResource Primary}"
                         Text="Download All E-Cards"
                         TextColor="#3B3B3B"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        />
 
                     <Image
                         HeightRequest="15"
@@ -66,19 +62,14 @@
                         Source="nextblack.png"
                         VerticalOptions="Center" />
                 </StackLayout>
-
+                
                 <BoxView
                     Margin="0"
                     BackgroundColor="#E1E0E6"
                     HeightRequest="1.5"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Start" />
-
-
-
             </StackLayout>
-
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>
