@@ -353,7 +353,6 @@ namespace WalimuCareApp.ViewModels
                                     };
             Crashes.TrackError(ex, properties);
         }
-
         public async Task<bool> CheckInternetConnectivity()
         {
             try
@@ -367,8 +366,6 @@ namespace WalimuCareApp.ViewModels
                     await ShowErrorMessage("Sorry Please switch on your data or connect to wifi before proceeding");
                     return false;
                 }
-
-
             }
             catch (Exception ex)
             {

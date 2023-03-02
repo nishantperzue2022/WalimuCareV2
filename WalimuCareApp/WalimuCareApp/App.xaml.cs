@@ -1,5 +1,6 @@
 ﻿using System;
 using WalimuCareApp.Services;
+using WalimuCareApp.ViewModels;
 using WalimuCareApp.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -17,15 +18,17 @@ namespace WalimuCareApp
 
             var accessToken = Preferences.Get("accessToken", string.Empty);
 
-            if (string.IsNullOrEmpty(accessToken))
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-            else
-            {
-                MainPage = new AppShell();
+            MainPage = new NavigationPage(new ResetPinPage());
 
-            }
+            //if (string.IsNullOrEmpty(accessToken))
+            //{
+            //    MainPage = new NavigationPage(new LoginPage());
+            //}
+            //else
+            //{
+            //    MainPage = new AppShell();
+
+            //}
         }
 
         protected override void OnStart()
@@ -38,6 +41,15 @@ namespace WalimuCareApp
 
         protected override void OnResume()
         {
+        }
+        public void RegisterDependencyModels()
+        {
+
+            DependencyService.Register<FaqsViewModel>();
+
+            DependencyService.Register<Covid19ViewModel>();
+
+
         }
     }
 }
