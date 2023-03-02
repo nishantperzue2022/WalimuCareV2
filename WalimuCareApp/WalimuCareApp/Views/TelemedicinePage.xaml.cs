@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,60 +14,69 @@ namespace WalimuCareApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TelemedicinePage : ContentPage
     {
-        public ObservableCollection<Card> listDetails { get; set; }
         public TelemedicinePage()
         {
             InitializeComponent();
-
-            GetDependants();
         }
-
-        private void GetDependants()
+        private void PhoneNumber_Tapped(object sender, EventArgs e)
         {
-            listDetails = new ObservableCollection<Card>()
+            try
             {
-                new Card() { ImgIcon="dependantsIcon.png",Name="IT Department"},
-                new Card() { ImgIcon="dependantsIcon.png",Name="IT Biological Science"},
-                new Card() { ImgIcon="dependantsIcon.png",Name="IT Education"},
-                new Card() { ImgIcon="dependantsIcon.png",Name="IT Accounts"}
-            };
-
-            BindingContext = this;
+                PhoneDialer.Open("+254730604000");
+            }
+            catch (Exception ex)
+            {
+                //SendErrorMessageToAppCenter(ex, "Contact Us", MemberNumber, PhoneNumber);
+                Console.WriteLine(ex);
+            }
         }
-
-        protected override void OnAppearing()
+        private void PhoneNumber2_Tapped(object sender, EventArgs e)
         {
-            base.OnAppearing();
-
-            //var dependants = new List<Dependant>
-            //{
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-            //    new Dependant{ MemberNumber="20133" ,FirstName="Peter",LastName="Kachezi" ,PhoneNumber="0704509484"},
-
-            //};
-
-            GetDependants();
+            try
+            {
+                PhoneDialer.Open("1528");
+            }
+            catch (Exception ex)
+            {
+                //SendErrorMessageToAppCenter(ex, "Contact Us", MemberNumber, PhoneNumber);
+                Console.WriteLine(ex);
+            }
         }
-
-
-
-        public class Card
+        private void PhoneNumber3_Tapped(object sender, EventArgs e)
         {
-            public string ImgIcon { get; set; }
-            public string Name { get; set; }
+            try
+            {
+                PhoneDialer.Open("0719044799");
+            }
+            catch (Exception ex)
+            {
+                //SendErrorMessageToAppCenter(ex, "Contact Us", MemberNumber, PhoneNumber);
+                Console.WriteLine(ex);
+            }
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
+        private void PhoneNumber4_Tapped(object sender, EventArgs e)
         {
-            var pop = new MessageBoxPage();
-
-            App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+            try
+            {
+                PhoneDialer.Open("0719044999");
+            }
+            catch (Exception ex)
+            {
+                //SendErrorMessageToAppCenter(ex, "Contact Us", MemberNumber, PhoneNumber);
+                Console.WriteLine(ex);
+            }
+        }
+        private async void Website_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                await Browser.OpenAsync("https://appointment.medbookafrica.com/", BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                //SendErrorMessageToAppCenter(ex, "Contact Us", MemberNumber, PhoneNumber);
+                Console.WriteLine(ex);
+            }
         }
     }
 }

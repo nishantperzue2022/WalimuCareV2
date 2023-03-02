@@ -163,14 +163,7 @@
             Route="ItemsPage" 
             ContentTemplate="{DataTemplate local:FAQPage}" />
     </FlyoutItem>
-    <FlyoutItem 
-        Title="Know Your Policy" 
-        Icon="wellnessblog.png">
-        <ShellContent 
-            Route="ErrorPage" 
-            ContentTemplate="{DataTemplate local:ErrorPage}" />
-    </FlyoutItem>
-
+  
     <FlyoutItem 
         Title="Available Limits"
         Icon="policylimitsicon.png">
