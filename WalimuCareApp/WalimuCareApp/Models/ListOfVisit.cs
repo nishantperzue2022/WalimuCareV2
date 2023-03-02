@@ -16,7 +16,9 @@ namespace WalimuCareApp.Models
         public string hospitalName { get; set; }
         public string remarks { get; set; }
         public DateTime mvcDate { get; set; }
-		public string StatusDescription
+        public float? totalApprovedAmount { get; set; }
+        public int totalRequestAmount { get; set; }
+        public string StatusDescription
 		{
 			get
 			{

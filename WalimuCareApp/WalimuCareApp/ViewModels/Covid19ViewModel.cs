@@ -52,7 +52,6 @@ namespace WalimuCareApp.ViewModels
 
                         MyCovid19 = new List<Covid19>();
 
-
                         await ShowLoadingMessage();
 
                         RestClient client = new RestClient(ApiDetail.EndPoint);
@@ -60,10 +59,9 @@ namespace WalimuCareApp.ViewModels
                         RestRequest restRequest = new RestRequest()
                         {
                             Resource = "/Complaints/GetCovidQuestions",
+
                             Method = Method.Get
                         };
-
-
 
                         var response = await client.ExecuteAsync(restRequest);
 
@@ -80,8 +78,6 @@ namespace WalimuCareApp.ViewModels
                             {
                                 await ShowErrorMessage("Sorry, no Covid 19 were found");
                             }
-
-
                         }
                         else
                         {

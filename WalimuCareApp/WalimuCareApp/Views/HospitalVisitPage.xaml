@@ -2,14 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WalimuCareApp.Views.HospitalVisitPage"
-             Title="Hospital Visits"
-             >
+             Title="Hospital Visits" >            
     <ContentPage.Content>
         <StackLayout   Padding="5">
-            
             <ListView x:Name="myListView"
-                      HasUnevenRows="True"                       
-                     >
+                      HasUnevenRows="True">               
+                    
                 <ListView.ItemTemplate >
 
                     <DataTemplate >
@@ -23,7 +21,6 @@
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         VerticalOptions="FillAndExpand">
-
                                     <BoxView BackgroundColor="{x:StaticResource PrimaryLight1}" WidthRequest="4" />
 
                                     <Grid
@@ -51,10 +48,25 @@
                                 Grid.Column="0"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
-                                Text="Hospital Name"
+                                Text="Patient Name"
                                 TextColor="{x:StaticResource Primary}" />
                                         <Label
                                 Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding name}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+                                        <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Hospital Name"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="1"
                                 Grid.Column="1"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
@@ -62,17 +74,15 @@
                                 TextColor="{x:StaticResource Secondary}" />
 
 
-
-
                                         <Label
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Grid.Column="0"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="Visit Date"
                                 TextColor="{x:StaticResource Primary}" />
                                         <Label
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Grid.Column="1"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
@@ -81,14 +91,14 @@
 
 
                                         <Label
-                                Grid.Row="2"
+                                Grid.Row="3"
                                 Grid.Column="0"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="Department"
                                 TextColor="{x:StaticResource Primary}" />
                                         <Label
-                                Grid.Row="2"
+                                Grid.Row="3"
                                 Grid.Column="1"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
@@ -96,69 +106,55 @@
                                 TextColor="{x:StaticResource Secondary}" />
 
                                         <Label
-                                Grid.Row="3"
+                                Grid.Row="4"
                                 Grid.Column="0"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="MVC Number"
                                 TextColor="{x:StaticResource Primary}" />
                                         <Label
-                                Grid.Row="3"
+                                Grid.Row="4"
                                 Grid.Column="1"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="{Binding mvcNumber}"
-                                TextColor="{x:StaticResource Secondary}" />  
-                                        
-                                        
+                                TextColor="{x:StaticResource Secondary}" />
+
                                         <Label
-                                Grid.Row="4"
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Request Amt"
+                                TextColor="{x:StaticResource Primary}" />
+                                        <Label
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding totalRequestAmount, StringFormat='{0:#,0.#0}'}"                                            
+                                TextColor="{x:StaticResource Secondary}" />
+
+                                        <Label
+                                Grid.Row="6"
                                 Grid.Column="0"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="Status"
                                 TextColor="{x:StaticResource Primary}" />
                                         <Label
-                                Grid.Row="4"
+                                Grid.Row="6"
                                 Grid.Column="1"
                                 FontSize="17"
                                 Style="{x:StaticResource MedBookLabelNormal}"
                                 Text="{Binding StatusDescription}"
                                 TextColor="{x:StaticResource Secondary}" />
 
-
-                                        <!--<Label
-                                Grid.Row="4"
-                                Grid.Column="0"
-                                FontSize="17"
-                                Style="{x:StaticResource MedBookLabelNormal}"
-                                Text="Claim Amount"
-                                TextColor="{x:StaticResource Primary}" />-->
-                                        <!--<Label
-                                Grid.Row="4"
-                                Grid.Column="1"
-                                FontSize="17"
-                                Style="{x:StaticResource MedBookLabelNormal}"
-                                TextColor="{x:StaticResource Secondary}">
-
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Ksh. " />
-                                        <Span Text="{Binding total, StringFormat='{}{0:N0}'}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>-->
-
-
-
-
                                     </Grid>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
-
-
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>

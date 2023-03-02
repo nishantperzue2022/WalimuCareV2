@@ -193,7 +193,7 @@ namespace WalimuCareApp.ViewModels
                     msg = Message;
                 }
 
-                await Application.Current.MainPage.Navigation.PushPopupAsync(new AppErrorPage(msg));
+                //await Application.Current.MainPage.Navigation.PushPopupAsync(new AppErrorPage(msg));
 
             }
             catch (Exception ex)
@@ -301,7 +301,7 @@ namespace WalimuCareApp.ViewModels
                     msg = Message;
                 }
 
-                await Application.Current.MainPage.Navigation.PushPopupAsync(new AppInfoPage(msg));
+                //await Application.Current.MainPage.Navigation.PushPopupAsync(new AppInfoPage(msg));
 
             }
             catch (Exception ex)

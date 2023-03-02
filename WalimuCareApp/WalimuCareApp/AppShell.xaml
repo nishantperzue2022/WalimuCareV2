@@ -4,7 +4,6 @@
        xmlns:local="clr-namespace:WalimuCareApp.Views"
        Title="WalimuCareApp"
        x:Class="WalimuCareApp.AppShell">
-
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
     
@@ -120,9 +119,6 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-
-
-
     <FlyoutItem 
         Title="Dashboard" 
         Icon="dashboardIcon.png">
@@ -131,13 +127,13 @@
             ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
 
-    <FlyoutItem 
+    <!--<FlyoutItem 
         Title="Find Hospital"
         Icon="hospitalIcon.png">
         <ShellContent
             Route="ItemsPage"
             ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </FlyoutItem>
+    </FlyoutItem>-->
 
     <FlyoutItem 
         Title="Track Hospital Visits"
@@ -154,9 +150,15 @@
             Route="DependantPage" 
             ContentTemplate="{DataTemplate local:DependantPage}" />
     </FlyoutItem>
-
-
     <FlyoutItem 
+        Title="Telemedicine" 
+        Icon="telemedicine.png">
+        <ShellContent 
+            Route="TelemedicinePage" 
+            ContentTemplate="{DataTemplate local:TelemedicinePage}" />
+    </FlyoutItem>
+
+    <!--<FlyoutItem 
         Title="FAQs" 
         Icon="faqs.png">
         <ShellContent 
@@ -226,7 +228,7 @@
         <ShellContent 
             Route="Covid19Page" 
             ContentTemplate="{DataTemplate local:Covid19Page}" />
-    </FlyoutItem>
+    </FlyoutItem>-->
 
     <FlyoutItem 
         Title="Emergency Contacts" 
