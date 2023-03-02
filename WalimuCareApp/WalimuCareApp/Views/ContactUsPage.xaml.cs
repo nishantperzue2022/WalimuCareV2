@@ -70,9 +70,9 @@ namespace WalimuCareApp.Views
 
             };
 
-            map.Pins.Add(pin);
+            //map.Pins.Add(pin);
 
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(1)), true);
+           // map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(1)), true);
 
         }
         private void PhoneNumber_Tapped(object sender, EventArgs e)
