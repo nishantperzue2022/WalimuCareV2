@@ -436,12 +436,12 @@ namespace WalimuCareApp.ViewModels
                     return;
                 }
 
-
-
-
                 await ShowLoadingMessage();
+
                 IsRefreshing = true;
+
                 NameOfSelectedArea = "you";
+
                 IsSelectCurrentLocationVisible = false;
 
                 if (!await CheckInternetConnectivity())
@@ -449,8 +449,6 @@ namespace WalimuCareApp.ViewModels
                     IsRefreshing = false;
                     return;
                 }
-
-
 
                 if (IsGpsEnabled == true)
                 {
@@ -510,7 +508,6 @@ namespace WalimuCareApp.ViewModels
         {
             try
             {
-
                 await Task.Delay(1000);
 
                 RestClient client = new RestClient(ApiDetail.EndPoint);
@@ -518,6 +515,7 @@ namespace WalimuCareApp.ViewModels
                 RestRequest restRequest = new RestRequest()
                 {
                     Method = Method.Get,
+
                     Resource = "/Hospitals/GetAllCounties"
                 };
 
@@ -525,12 +523,12 @@ namespace WalimuCareApp.ViewModels
 
                 if (response.IsSuccessful)
                 {
-
                     var deserializedData = JsonConvert.DeserializeObject<BaseResponse<List<County>>>(response.Content);
 
                     if (deserializedData.success)
                     {
                         LstLocations = deserializedData.data;
+
                         OriginalLstLocations = deserializedData.data;
                         //cmbLocations.DataSource = LstLocations.Select(p => p.county).ToList();
                     }
@@ -546,6 +544,7 @@ namespace WalimuCareApp.ViewModels
             catch (Exception ex)
             {
                 SendErrorMessageToAppCenter(ex, "Find Hospital", "", PhoneNumber);
+
                 Console.Write(ex);
             }
 
@@ -565,6 +564,7 @@ namespace WalimuCareApp.ViewModels
                 RestRequest restRequest = new RestRequest()
                 {
                     Method = Method.Get,
+
                     Resource = "/Hospitals/GetAllClinics"
                 };
 

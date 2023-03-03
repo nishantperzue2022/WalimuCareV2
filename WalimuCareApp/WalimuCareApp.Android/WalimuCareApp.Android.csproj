@@ -63,6 +63,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>20.4.0.52</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Core">
+      <Version>20.4.0.52</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Expander">
       <Version>20.4.0.52</Version>
     </PackageReference>

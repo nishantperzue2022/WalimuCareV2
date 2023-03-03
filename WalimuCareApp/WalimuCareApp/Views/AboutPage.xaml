@@ -1,633 +1,909 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
              x:Class="WalimuCareApp.Views.AboutPage"
-             Title="Walimu Care"
-        BackgroundColor="#F8F8F8"
-     NavigationPage.HasNavigationBar="False"
+    x:Name="theNavigationBar"
+
+    BackgroundColor="#F8F8F8"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False"
     Style="{StaticResource MyContentPageStyle}">
 
-    <Shell.TitleView>
-        <StackLayout
-            Padding="0"
-            BackgroundColor="{StaticResource Primary}"
-            HorizontalOptions="FillAndExpand"
-            Orientation="Horizontal"
-            Spacing="0"
-            VerticalOptions="FillAndExpand">
-
-            <Image
-                HeightRequest="25"
-                HorizontalOptions="Start"
-                Source="WhiteHkLogoWithBlueBackground"
-                VerticalOptions="CenterAndExpand" />
-            <Label
-                Margin="10,0,0,0"
-                Padding="0,0,0,0"
-                FontSize="Medium"
-                HorizontalOptions="StartAndExpand"
-                Style="{StaticResource MedBookLabel}"
-                Text="WalimuCare"
-                TextColor="{StaticResource HkBackground}"
-                VerticalOptions="CenterAndExpand"
-                VerticalTextAlignment="Center" />
-        </StackLayout>
-    </Shell.TitleView>
-
     <ContentPage.Resources>
+
         <ResourceDictionary>
-            <DataTemplate x:Key="medicalcovertemplate">
+            <Style
+                x:Key="DashboardBottomLabel"
+                BasedOn="{StaticResource MedBookLabelMedium}"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="#3A61AC" />
+                <Setter Property="FontSize" Value="Micro" />
+            </Style>
 
-                <Frame
-                    Margin="10"
-                    Padding="0"
-                    CornerRadius="5"
-                    HasShadow="True"
-                    HeightRequest="250"
-                    WidthRequest="310">
-                    <Grid Padding="0" ColumnDefinitions="0.5*,0.5*">
-
-                        <Image
-                            Grid.Column="0"
-                            Aspect="AspectFill"
-                            BackgroundColor="White"
-                            Source="{Binding ImageUrl}" />
-
-                        <StackLayout
-                            Grid.Column="1"
-                            Margin="0"
-                            Padding="0"
-                            Orientation="Vertical">
-
-                            <Label
-                                Margin="0,5,0,0"
-                                FontSize="15"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource MedBookLabel}"
-                                Text="{Binding Title}"
-                                TextColor="{StaticResource Secondary}"
-                                TextDecorations="Underline" />
-
-                            <Label
-                                FontSize="12"
-                                Style="{StaticResource MedBookLabelNormal}"
-                                Text="{Binding SubTitle}"
-                                TextColor="Black" />
-
-
-                            <ListView
-                                HasUnevenRows="True"
-                                ItemsSource="{Binding Description}"
-                                SelectionMode="None"
-                                SeparatorVisibility="None">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Label
-                                                Margin="10,3,3,3"
-                                                Padding="0"
-                                                FontSize="11"
-                                                Text="{Binding .}" />
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-
-                            <Button
-                                Margin="5"
-                                Padding="0"
-                                Command="{Binding Source={x:Reference theNavigationBar}, Path=BindingContext.GoToViewPremiumsAndBenefitsCommand}"
-                                CommandParameter="{Binding Id}"
-                                HeightRequest="30"
-                                HorizontalOptions="Center"
-                                Style="{StaticResource ButtonOutlineSecondary}"
-                                Text="Buy Cover"
-                                TextTransform="None"
-                                VerticalOptions="End" />
-
-
-
-
-                        </StackLayout>
-
-                    </Grid>
-                </Frame>
-
-            </DataTemplate>
+            <Style x:Key="DashboardBottomImage" TargetType="ffimageloading:CachedImage">
+                <Setter Property="HeightRequest" Value="35" />
+            </Style>
         </ResourceDictionary>
+
     </ContentPage.Resources>
+
+
 
     <ContentPage.Content>
 
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout
+            Margin="0"
+            Padding="0"
+            Spacing="0">
+
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="0"
+                HasShadow="True"
+                HeightRequest="60"
+                VerticalOptions="Start">
+                <StackLayout Padding="5" Orientation="Horizontal">
+
+                    <Image
+                        Margin="5,0,0,0"
+                        HeightRequest="50"
+                        HorizontalOptions="Start"
+                        Source="menu"
+                        VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowNavigationMenuCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image
+                        Margin="10,0,0,0"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        Source="WhiteHkLogoWithBlueBackground"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Label
+                        Margin="0,0,0,0"
+                        FontSize="18"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="WalimuCare"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <!--<xct:AvatarView
+                        Margin="0,0,10,0"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{Binding ImageUrl}"
+                        VerticalOptions="CenterAndExpand" />-->
+
+                </StackLayout>
+
+            </Frame>
+            <ScrollView Margin="0" Padding="0">
+
+                <StackLayout Margin="0" Padding="0">
+
+                    <StackLayout
+                        Margin="5,5,5,5"
+                        Spacing="7"
+                        VerticalOptions="FillAndExpand">
+                        <!--  Start of Medical Cover Frame  -->
+
+                        <yummy:PancakeView
+                            Margin="0,0,0,0"
+                            Padding="0"
+                            BackgroundGradientEndPoint="1,0"
+                            BackgroundGradientStartPoint="0,0"
+                            CornerRadius="5"
+                            HeightRequest="180">
+
+                            <yummy:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToPolicyDetailsCommand}" />
+                            </yummy:PancakeView.GestureRecognizers>
+
+                            <yummy:PancakeView.Shadow>
+                                <yummy:DropShadow Offset="20,20" Color="#000000" />
+                            </yummy:PancakeView.Shadow>
+
+                            <yummy:PancakeView.BackgroundGradientStops>
+                                <yummy:GradientStop Offset="0" Color="#BFB1D7" />
+                                <yummy:GradientStop Offset="1" Color="#937FBB" />
+                            </yummy:PancakeView.BackgroundGradientStops>
+
+                            <Grid
+                                ColumnDefinitions="0.4*,0.6*"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+
+                                <Image
+                                    Grid.Column="0"
+                                    Margin="5,0,0,0"
+                                    Aspect="AspectFill"
+                                    HeightRequest="250"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="chatwithadoctordash.png"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <Label
+                                        Margin="0,20,0,0"
+                                        FontSize="12"
+                                        Style="{StaticResource MedBookLabelMedium}"
+                                        Text="Manage your scheme from your phone"
+                                        TextColor="#422E7C" />
+
+                                    <StackLayout
+                                        Margin="0,-5,0,0"
+                                        Padding="0"
+                                        Orientation="Horizontal">
+
+                                        <Label
+                                            Margin="0,0,0,0"
+                                            FontSize="28"
+                                            Style="{StaticResource MedBookLabel}"
+                                            Text="Know your policy"
+                                            TextColor="#422E7C" />
+
+                                    </StackLayout>
+
+                                    <Label
+                                        Margin="0,10,0,0"
+                                        CharacterSpacing="0"
+                                        FontSize="12"
+                                        Style="{StaticResource MedBookLabelMedium}"
+                                        Text="More on your policy benefits and limits"
+                                        TextColor="White" />
+
+                                    <Frame
+                                        Margin="0,20,0,0"
+                                        Padding="0"
+                                        BackgroundColor="White"
+                                        CornerRadius="15"
+                                        HasShadow="False"
+                                        HorizontalOptions="StartAndExpand">
+                                        
+                                        <syncEffectsView:SfEffectsView Padding="4">
+
+                                            <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoToPolicyDetailsCommand}" />
+                                            </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                            <StackLayout Orientation="Horizontal">
+
+                                                <Label
+                                                    Margin="6,0,10,0"
+                                                    FontSize="14"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MedBookLabelMedium}"
+                                                    Text="View Policy Now"
+                                                    TextColor="#422E7C"
+                                                    VerticalOptions="CenterAndExpand" />
+
+                                            </StackLayout>
+
+                                        </syncEffectsView:SfEffectsView>
+
+                                    </Frame>
+
+                                </StackLayout>
+
+                            </Grid>
+
+                        </yummy:PancakeView>
 
 
-            <yummy:PancakeView
-                AbsoluteLayout.LayoutBounds="0.5,0.0001,1,0.3"
-                AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
-                BackgroundColor="{x:StaticResource Primary}"
-                CornerRadius="0,0,20,20"
-                HeightRequest="200"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand" />
+                        <!--  End  of Medical Cover Frame  -->
 
 
-            <StackLayout
-                Padding="15,0,15,10"
-                AbsoluteLayout.LayoutBounds="0.5,0.1,1,1"
-                AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
 
 
-                <StackLayout Margin="10">
-                    <StackLayout Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
+
+
+
+
+                        <!--  Start of Three frames find hospital , track pre auths , covid help desk  -->
+
                         <Grid
-                            ColumnDefinitions="0.7*,0.3*"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
+                            Padding="0"
+                            ColumnDefinitions="0.33*,0.33*,0.33*"
+                            ColumnSpacing="5">
 
-                            <StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand">
-                                <Label
-                                    FontSize="15"
-                                    Style="{StaticResource MedBookLabelNormal}"
-                                    Text="{Binding Greetings}"
-                                    TextColor="White" />
+                            <yummy:PancakeView
+                                Grid.Column="0"
+                                Padding="0"
+                                BackgroundColor="#F9E4EF"
+                                BackgroundGradientEndPoint="1,0"
+                                BackgroundGradientStartPoint="0,0"
+                                CornerRadius="5"
+                                HeightRequest="100">
 
+                                <yummy:PancakeView.Shadow>
+                                    <yummy:DropShadow Offset="20,20" Color="#000000" />
+                                </yummy:PancakeView.Shadow>
+
+                                <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+                                    <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoToFindHospital}" />
+                                    </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                    <Grid>
+                                        <Image
+                                            Margin="50,14,0,-5"
+                                            HeightRequest="100"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="findhospitalnearyoudash"
+                                            VerticalOptions="EndAndExpand" />
+
+                                        <StackLayout
+                                            Margin="5"
+                                            Padding="0"
+                                            Spacing="0">
+                                            <Label
+                                                Margin="0"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text="Find hospital"
+                                                TextColor="#35455C" />
+                                            <Label
+                                                Margin="0,-2,0,0"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text="near you"
+                                                TextColor="#35455C" />
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                </syncEffectsView:SfEffectsView>
+
+
+                            </yummy:PancakeView>
+
+
+
+
+                            <yummy:PancakeView
+                                Grid.Column="1"
+                                Padding="0"
+                                BackgroundColor="#F7EAE5"
+                                BackgroundGradientEndPoint="1,0"
+                                BackgroundGradientStartPoint="0,0"
+                                CornerRadius="5"
+                                HeightRequest="100">
+
+                                <yummy:PancakeView.Shadow>
+                                    <yummy:DropShadow Offset="20,20" Color="#000000" />
+                                </yummy:PancakeView.Shadow>
+
+
+                                <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+                                    <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoTrackPreauthCommand}" />
+                                    </syncEffectsView:SfEffectsView.GestureRecognizers>
+                                    <Grid Padding="0">
+                                        <Image
+                                            Margin="50,14,0,-5"
+                                            HeightRequest="100"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="trackpreauthstatusdash"
+                                            VerticalOptions="EndAndExpand" />
+
+                                        <StackLayout
+                                            Margin="5"
+                                            Padding="0"
+                                            Spacing="0">
+                                            <Label
+                                                Margin="0"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text="Track Preauth"
+                                                TextColor="#35455C" />
+                                            <Label
+                                                Margin="0"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text=" Status"
+                                                TextColor="#35455C" />
+                                        </StackLayout>
+
+
+                                    </Grid>
+
+                                </syncEffectsView:SfEffectsView>
+
+                            </yummy:PancakeView>
+
+
+
+
+                            <yummy:PancakeView
+                                Grid.Column="2"
+                                Padding="0"
+                                BackgroundColor="#EBF1FA"
+                                BackgroundGradientEndPoint="1,0"
+                                BackgroundGradientStartPoint="0,0"
+                                CornerRadius="5"
+                                HeightRequest="100">
+
+                                <yummy:PancakeView.Shadow>
+                                    <yummy:DropShadow Offset="20,20" Color="#000000" />
+                                </yummy:PancakeView.Shadow>
+
+                                <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+                                    <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoBookCovidVaccinationCommand}" />
+                                    </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                    <Grid>
+                                        <Image
+                                            Margin="50,0,0,0"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="Covid19.png"
+                                            VerticalOptions="EndAndExpand" />
+
+                                        <StackLayout
+                                            Margin="5"
+                                            Padding="0"
+                                            Spacing="0">
+                                            <Label
+                                                Margin="0"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text="Covid-19 "
+                                                TextColor="#35455C" />
+                                            <Label
+                                                Margin="0"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text="Helpdesk"
+                                                TextColor="#35455C" />
+                                        </StackLayout>
+
+
+
+                                    </Grid>
+
+                                </syncEffectsView:SfEffectsView>
+
+                            </yummy:PancakeView>
+
+                        </Grid>
+
+                        <!--  End of Three frames find hospital , track pre auths , covid help desk  -->
+
+
+
+
+
+
+
+
+                        <!--  Start of Your health frame  -->
+
+                        <yummy:PancakeView
+                            Padding="0"
+                            BackgroundColor="#FFFFFF"
+                            BackgroundGradientEndPoint="1,0"
+                            BackgroundGradientStartPoint="0,0"
+                            CornerRadius="5">
+                            <yummy:PancakeView.Shadow>
+                                <yummy:DropShadow Offset="20,20" Color="#000000" />
+                            </yummy:PancakeView.Shadow>
+
+                            <StackLayout Padding="10" Spacing="0">
                                 <Label
                                     Margin="0,0,0,0"
-                                    FontSize="15"
-                                    Style="{StaticResource MedBookLabel}"
-                                    Text="{Binding FullName}"
-                                    TextColor="White" />
+                                    FontSize="14"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource MedBookLabelMedium}"
+                                    Text="Your health"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="Start" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Margin="0,0,0,0"
+                                        FontSize="12"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource MedBookLabelMedium}"
+                                        Text="More to help you manage your health &amp; scheme better"
+                                        TextColor="#422E7C"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Grid ColumnDefinitions="0.33*,0.33*,0.33*" HorizontalOptions="FillAndExpand">
+
+                                        <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand">
+
+                                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding GoToBuyMedicalCoverCommand}" />
+                                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                                <StackLayout>
+
+                                                    <Image
+                                                        HeightRequest="70"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Source="medicalcoverdash"
+                                                        VerticalOptions="StartAndExpand" />
+
+                                                    <StackLayout
+                                                        Margin="0"
+                                                        Padding="0"
+                                                        Spacing="0">
+                                                        <Label
+                                                            FontSize="11"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource MedBookLabelMedium}"
+                                                            Text="Buy Afya Kwa Wote"
+                                                            TextColor="#36455C"
+                                                            VerticalOptions="EndAndExpand" />
+                                                        <Label
+                                                            FontSize="11"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource MedBookLabelMedium}"
+                                                            Text="Medical Cover"
+                                                            TextColor="#36455C"
+                                                            VerticalOptions="EndAndExpand" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+                                            </syncEffectsView:SfEffectsView>
+
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1">
+
+                                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding OpenBrowserToChronicMedication}" />
+                                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                                <StackLayout>
+
+                                                    <Image
+                                                        HeightRequest="70"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Source="orderchronicmedicinedash"
+                                                        VerticalOptions="StartAndExpand" />
+
+                                                    <StackLayout
+                                                        Margin="0"
+                                                        Padding="0"
+                                                        Spacing="0">
+                                                        <Label
+                                                            FontSize="12"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource MedBookLabelMedium}"
+                                                            Text="Order chronic "
+                                                            TextColor="#36455C"
+                                                            VerticalOptions="EndAndExpand" />
+                                                        <Label
+                                                            FontSize="12"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource MedBookLabelMedium}"
+                                                            Text="medicine"
+                                                            TextColor="#36455C"
+                                                            VerticalOptions="EndAndExpand" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                            </syncEffectsView:SfEffectsView>
+
+
+
+
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="2">
+
+                                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding GoReportIssuesCommand}" />
+                                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+
+                                                <StackLayout>
+
+                                                    <Image
+                                                        HeightRequest="70"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Source="reportissuesdash"
+                                                        VerticalOptions="StartAndExpand" />
+
+                                                    <StackLayout
+                                                        Margin="0"
+                                                        Padding="0"
+                                                        Spacing="0">
+                                                        <Label
+                                                            FontSize="12"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource MedBookLabelMedium}"
+                                                            Text="Report Issues"
+                                                            TextColor="#36455C"
+                                                            VerticalOptions="EndAndExpand" />
+                                                        <Label
+                                                            FontSize="12"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalTextAlignment="Center"
+                                                            Style="{StaticResource MedBookLabelMedium}"
+                                                            Text="/feedback"
+                                                            TextColor="#36455C"
+                                                            VerticalOptions="EndAndExpand" />
+                                                    </StackLayout>
+
+
+                                                </StackLayout>
+
+
+                                            </syncEffectsView:SfEffectsView>
+
+                                        </StackLayout>
+
+
+
+                                    </Grid>
+
+                                </StackLayout>
+
+
+                                <StackLayout>
+
+                                </StackLayout>
 
 
                             </StackLayout>
 
+                        </yummy:PancakeView>
 
-                            <ffimageloading:CachedImage
-                                Grid.Column="1"
-                                CacheDuration="90"
-                                DownsampleToViewSize="true"
-                                HeightRequest="60"
-                                RetryCount="3"
-                                RetryDelay="600"
-                                Source="{Binding AvatorUrl}"
-                                VerticalOptions="CenterAndExpand">
-                                <ffimageloading:CachedImage.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoToUserProfileCommand}" />
-                                </ffimageloading:CachedImage.GestureRecognizers>
-
-                                <ffimageloading:CachedImage.Transformations>
-                                    <fftransformations:CircleTransformation />
-                                </ffimageloading:CachedImage.Transformations>
-                            </ffimageloading:CachedImage>
+                        <!--  End of Your health frame  -->
 
 
 
-                        </Grid>
+
+
+
+
+
+
+
+                        <!--  Start of Ask Linda  -->
+
+                        <yummy:PancakeView
+                            Grid.Column="2"
+                            Padding="0"
+                            BackgroundColor="#FFFFFF"
+                            BackgroundGradientEndPoint="1,0"
+                            BackgroundGradientStartPoint="0,0"
+                            CornerRadius="5"
+                            HeightRequest="60">
+
+                            <yummy:PancakeView.Shadow>
+                                <yummy:DropShadow Offset="20,20" Color="#000000" />
+                            </yummy:PancakeView.Shadow>
+
+                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToAskLindaCommand}" />
+                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+
+                                <Grid ColumnDefinitions="0.8*,0.2*">
+
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Margin="10,5,10,5"
+                                        Spacing="0">
+
+                                        <StackLayout
+                                            Margin="0,0,0,0"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <Label
+                                                Margin="0,0,0,0"
+                                                FontSize="14"
+                                                HorizontalOptions="Start"
+                                                Style="{StaticResource MedBookLabelMedium}"
+                                                Text="Need Help? Ask Linda"
+                                                TextColor="{StaticResource Primary}"
+                                                VerticalOptions="CenterAndExpand" />
+
+
+                                            <Image
+                                                HeightRequest="10"
+                                                HorizontalOptions="StartAndExpand"
+                                                Source="nextblack"
+                                                VerticalOptions="CenterAndExpand" />
+
+
+                                        </StackLayout>
+
+                                        <Label
+                                            Margin="0,0,0,0"
+                                            FontSize="10"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MedBookLabelMedium}"
+                                            Text="Linda is your 24/7 medical scheme WhatsApp chatbot Assistant"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+
+
+                                    </StackLayout>
+
+
+                                    <ffimageloading:CachedImage
+                                        Grid.Column="1"
+                                        Margin="0,0,20,0"
+                                        CacheDuration="90"
+                                        HeightRequest="35"
+                                        HorizontalOptions="EndAndExpand"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="lindadash"
+                                        VerticalOptions="CenterAndExpand" />
+
+                                </Grid>
+
+                            </syncEffectsView:SfEffectsView>
+
+                        </yummy:PancakeView>
+
+                        <!--  End of Ask Linda  -->
+
+
                     </StackLayout>
 
-                    <ScrollView
-                        Margin="0"
-                        Padding="0"
-                        Orientation="Vertical">
-                        <StackLayout Margin="0" Padding="0">
+                    <StackLayout HeightRequest="20" VerticalOptions="EndAndExpand" />
 
-                            <Frame
-                                Margin="0,25,0,0"
-                                Padding="0"
-                                BackgroundColor="White"
-                                CornerRadius="15">
-                                <Grid
-                                    Padding="10"
-                                    ColumnDefinitions="0.5*,0.5*"
-                                    RowDefinitions="0.5*,0.5*">
+                </StackLayout>
+            </ScrollView>
+            <!--Start of advert -->
+            <!--<yummy:PancakeView
+                            Padding="0"
+                            BackgroundColor="#FFFFFF"
+                            BackgroundGradientEndPoint="1,0"
+                            BackgroundGradientStartPoint="0,0"
+                            CornerRadius="5"
+                            HeightRequest="90">
 
+                <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GotoWellnessBlogCommand}" />
+                </yummy:PancakeView.GestureRecognizers>
 
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Offset="0,0" Color="#000000" />
+                </yummy:PancakeView.Shadow>
 
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand">
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding GoToPolicyLimitsCommand}" />
-                                        </StackLayout.GestureRecognizers>
-
-                                        <yummy:PancakeView
-                                            Margin="5"
-                                            BackgroundColor="{x:StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="60"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="Center"
-                                            WidthRequest="60">
-
-                                            <ffimageloading:CachedImage
-                                                CacheDuration="90"
-                                                DownsampleToViewSize="true"
-                                                HeightRequest="40"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="buymedicalcover.png"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-
-
-                                        </yummy:PancakeView>
-
-                                        <Label
-                                            FontSize="Small"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Policy Limits"
-                                            TextColor="{StaticResource Secondary}" />
-                                    </StackLayout>
-
-
-                                    <StackLayout
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand">
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped"
-                                                                  />
-                                        </StackLayout.GestureRecognizers>
-
-                                        <yummy:PancakeView
-                                            Margin="5"
-                                            BackgroundColor="{x:StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="60"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="Center"
-                                            WidthRequest="60">
-
-                                            <ffimageloading:CachedImage
-                                                CacheDuration="90"
-                                                DownsampleToViewSize="true"
-                                                HeightRequest="40"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="dependantsIcon.png"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-
-
-                                        </yummy:PancakeView>
-
-                                        <Label
-                                            FontSize="Small"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="My Dependants"                                           
-                                            TextColor="{StaticResource Secondary}" />
-                                    </StackLayout>
-
-                                    <StackLayout
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding GoToFindHospital}" />
-                                        </StackLayout.GestureRecognizers>
-                                        <yummy:PancakeView
-                                            Margin="5"
-                                            BackgroundColor="{x:StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="60"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="Center"
-                                            WidthRequest="60">
-
-                                            <ffimageloading:CachedImage
-                                                CacheDuration="90"
-                                                DownsampleToViewSize="true"
-                                                HeightRequest="35"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="hospitalIcon.png"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-
-
-                                        </yummy:PancakeView>
-
-                                        <Label
-                                            FontSize="Small"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Find a Hospital"
-                                            TextColor="{StaticResource Secondary}" />
-                                    </StackLayout>
-
-
-                                    <StackLayout
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand">
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                                  Tapped="TapGestureRecognizer_Tapped_1"/>
-                                        </StackLayout.GestureRecognizers>
-
-                                        <yummy:PancakeView
-                                            Margin="5"
-                                            BackgroundColor="{x:StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="60"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="Center"
-                                            WidthRequest="60">
-
-                                            <ffimageloading:CachedImage
-                                                CacheDuration="90"
-                                                DownsampleToViewSize="true"
-                                                HeightRequest="35"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="hospitalbedicon.png"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-
-
-                                        </yummy:PancakeView>
-
-                                        <Label
-                                            FontSize="Small"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Hospital Visits"
-                                            TextColor="{StaticResource Secondary}" />
-                                    </StackLayout>
-
-
-
-                                </Grid>
-                            </Frame>
-
-
-
-
-                            <Grid Margin="0,20,0,0" ColumnDefinitions="0.5*,0.5*">
-                                <Frame
+                
+                -->
+            <!--<Grid
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+                    <syncEffectsView:SfEffectsView>
+                        <Image
                                     Grid.Column="0"
-                                    Margin="2"
-                                    Padding="10"
-                                    CornerRadius="5">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenBrowserToTelemedicine}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid ColumnDefinitions="0.3*,0.7*">
+                                    Margin="0,0,0,0"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="advert.png"
+                                    VerticalOptions="CenterAndExpand" />
+                    </syncEffectsView:SfEffectsView>
+                   
+                    
+                </Grid>-->
+            <!--
+                <Image
+                                    
+                                    HeightRequest="100"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="advert.png" />
+            </yummy:PancakeView>-->
+            <!--end of advert -->
+
+            <!--  Start of Bottom Tab  -->
+
+            <Frame
+                Margin="0"
+                Padding="0"
+                HasShadow="True"
+                VerticalOptions="EndAndExpand">
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+
+                    <Grid
+                        Margin="5,5,5,10"
+                        ColumnDefinitions="0.25*,0.25*,0.25*,0.25*"
+                        VerticalOptions="CenterAndExpand">
+
+                        <StackLayout Grid.Column="0">
 
 
-                                        <yummy:PancakeView
-                                            Grid.Column="0"
-                                            Padding="0"
-                                            BackgroundColor="{StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="40"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            WidthRequest="40">
-                                            <ffimageloading:CachedImage
-                                                Margin="0"
-                                                CacheDuration="90"
-                                                HeightRequest="30"
-                                                HorizontalOptions="CenterAndExpand"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="telemedicine"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-                                        </yummy:PancakeView>
-                                        <Label
-                                            Grid.Column="1"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Book Telemedicine"
-                                            TextColor="{StaticResource Secondary}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </Grid>
+                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
 
-                                </Frame>
+                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToPolicyDetailsCommand}" />
+                                </syncEffectsView:SfEffectsView.GestureRecognizers>
 
-                                <Frame
-                                    Grid.Column="1"
-                                    Margin="2"
-                                    Padding="5,0,0,0"
-                                    CornerRadius="5">
-
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenBrowserToChronicMedication}" />
-                                    </Frame.GestureRecognizers>
-
-                                    <Grid Margin="0" ColumnDefinitions="0.3*,0.7*">
-                                        <yummy:PancakeView
-                                            Grid.Column="0"
-                                            Margin="0"
-                                            BackgroundColor="{StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="40"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"
-                                            WidthRequest="40">
-                                            <ffimageloading:CachedImage
-                                                CacheDuration="90"
-                                                HeightRequest="35"
-                                                HorizontalOptions="CenterAndExpand"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="ecommerce"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-                                        </yummy:PancakeView>
-                                        <Label
-                                            Grid.Column="1"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Order Chronic Medicine"
-                                            TextColor="{StaticResource Secondary}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </Grid>
-
-                                </Frame>
-                            </Grid>
-
-
-
-
-                            <Grid
-                                Margin="0,20,0,0"
-                                Padding="0"
-                                ColumnDefinitions="0.5*,0.5*">
-                                <Frame
-                                    Grid.Column="0"
-                                    Margin="2"
-                                    Padding="5"
-                                    CornerRadius="5">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoToPolicyDetailsCommand}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid ColumnDefinitions="0.3*,0.7*">
-
-                                        <yummy:PancakeView
-                                            Grid.Column="0"
-                                            Margin="0"
-                                            BackgroundColor="{x:StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="40"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"
-                                            WidthRequest="40">
-                                            <ffimageloading:CachedImage
-                                                CacheDuration="90"
-                                                DownsampleToViewSize="true"
-                                                HeightRequest="25"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="policydocumentsicon.png"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-                                        </yummy:PancakeView>
-                                        <Label
-                                            Grid.Column="1"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Policy Details"
-                                            TextColor="{StaticResource Secondary}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </Grid>
-
-                                </Frame>
-
-
-                                <Frame
-                                    Grid.Column="1"
-                                    Margin="2"
-                                    Padding="10"
-                                    CornerRadius="5">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoToAskLindaCommand}" />
-                                    </Frame.GestureRecognizers>
-                                    <Grid ColumnDefinitions="0.3*,0.7*">
-
-
-                                        <yummy:PancakeView
-                                            Grid.Column="0"
-                                            Margin="0"
-                                            Padding="0"
-                                            BackgroundColor="{StaticResource PrimaryLight4}"
-                                            CornerRadius="30"
-                                            HeightRequest="40"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            WidthRequest="40">
-                                            <ffimageloading:CachedImage
-                                                Margin="0"
-                                                CacheDuration="90"
-                                                HeightRequest="35"
-                                                HorizontalOptions="CenterAndExpand"
-                                                RetryCount="3"
-                                                RetryDelay="600"
-                                                Source="linda"
-                                                VerticalOptions="CenterAndExpand">
-                                                <ffimageloading:CachedImage.Transformations>
-                                                    <fftransformations:CircleTransformation />
-                                                </ffimageloading:CachedImage.Transformations>
-                                            </ffimageloading:CachedImage>
-                                        </yummy:PancakeView>
-                                        <Label
-                                            Grid.Column="1"
-                                            Style="{StaticResource MedBookLabelNormal}"
-                                            Text="Need Help? Ask Linda"
-                                            TextColor="{StaticResource Secondary}"
-                                            VerticalOptions="CenterAndExpand" />
-                                    </Grid>
-
-                                </Frame>
-
-                            </Grid>
-
-
-                            <Frame
-                                Margin="2,10,2,10"
-                                Padding="10"
-                                CornerRadius="5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoToSubmitComplaintsCommand}" />
-                                </Frame.GestureRecognizers>
-                                <Grid ColumnDefinitions="0.2*,0.8*" HorizontalOptions="CenterAndExpand">
-                                    <yummy:PancakeView
-                                        Grid.Column="0"
-                                        Padding="0"
-                                        BackgroundColor="{StaticResource PrimaryLight4}"
-                                        CornerRadius="30"
-                                        HeightRequest="40"
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        WidthRequest="40">
-                                        <ffimageloading:CachedImage
-                                            Margin="0"
-                                            CacheDuration="90"
-                                            HeightRequest="20"
-                                            HorizontalOptions="CenterAndExpand"
-                                            RetryCount="3"
-                                            RetryDelay="600"
-                                            Source="feedbackIcon"
-                                            VerticalOptions="CenterAndExpand">
-                                            <ffimageloading:CachedImage.Transformations>
-                                                <fftransformations:CircleTransformation />
-                                            </ffimageloading:CachedImage.Transformations>
-                                        </ffimageloading:CachedImage>
-                                    </yummy:PancakeView>
-                                    <Label
-                                        Grid.Column="1"
-                                        Style="{StaticResource MedBookLabelNormal}"
-                                        Text="Reports Issues/Feedback"
-                                        TextColor="{StaticResource Secondary}"
+                                <StackLayout>
+                                    <ffimageloading:CachedImage
+                                        CacheDuration="90"
+                                        DownsampleToViewSize="true"
+                                        HeightRequest="35"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="mypolicydash.png"
                                         VerticalOptions="CenterAndExpand" />
-                                </Grid>
-                            </Frame>
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource DashboardBottomLabel}"
+                                        Text="My Policy"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
 
+                            </syncEffectsView:SfEffectsView>
 
 
                         </StackLayout>
-                    </ScrollView>
+
+                        <StackLayout Grid.Column="1">
+
+                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToManageDependants}" />
+                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                <StackLayout>
+
+                                    <ffimageloading:CachedImage
+                                        CacheDuration="90"
+                                        DownsampleToViewSize="true"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="mydependantsdash.png"
+                                        Style="{StaticResource DashboardBottomImage}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource DashboardBottomLabel}"
+                                        Text="My Dependants"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+
+                            </syncEffectsView:SfEffectsView>
 
 
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2">
+
+                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToTrackClaims}" />
+                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                <StackLayout>
+
+                                    <ffimageloading:CachedImage
+                                        CacheDuration="90"
+                                        DownsampleToViewSize="true"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="myhospitalvisitsdash.png"
+                                        Style="{StaticResource DashboardBottomImage}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource DashboardBottomLabel}"
+                                        Text="Hospital Visits"
+                                        VerticalOptions="CenterAndExpand" />
+
+                                </StackLayout>
+
+                            </syncEffectsView:SfEffectsView>
+
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="3">
+
+                            <syncEffectsView:SfEffectsView Margin="0" Padding="0">
+
+                                <syncEffectsView:SfEffectsView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToEcardCommand}" />
+                                </syncEffectsView:SfEffectsView.GestureRecognizers>
+
+                                <StackLayout>
+
+                                    <ffimageloading:CachedImage
+                                        CacheDuration="90"
+                                        DownsampleToViewSize="true"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="ecarddash.png"
+                                        Style="{StaticResource DashboardBottomImage}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource DashboardBottomLabel}"
+                                        Text="E-Card"
+                                        VerticalOptions="CenterAndExpand" />
+
+                                </StackLayout>
+
+
+                            </syncEffectsView:SfEffectsView>
+
+                        </StackLayout>
+
+                    </Grid>
                 </StackLayout>
 
-
-
-            </StackLayout>
-        </AbsoluteLayout>
+            </Frame>
+            <!--  End of Bottom Tab  -->
+        </StackLayout>
     </ContentPage.Content>
 
+    <!--<AbsoluteLayout>Command="{Binding rattingBarCommand}"
+        <ImageButton  Command="{Binding rattingBarCommand}"
+                Grid.Column="2"
+                AbsoluteLayout.LayoutBounds="0.95,0.95,80,80"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Source="ChatLinda.png"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="Transparent"
+                HorizontalOptions="End"
+                WidthRequest="150" 
+                HeightRequest="150"/>
+    </AbsoluteLayout>-->
 </ContentPage>

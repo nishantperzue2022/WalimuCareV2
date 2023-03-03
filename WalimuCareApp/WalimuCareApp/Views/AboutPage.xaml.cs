@@ -11,37 +11,25 @@ namespace WalimuCareApp.Views
         public AboutPage()
         {
             InitializeComponent();
+
+            this.BindingContext = new RattingBarViewModal();
+
         }
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-		}
-		private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-		{
-			try
-			{
-				await Navigation.PushAsync(new DependantPage());
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-		}
+            BindingContext = DependencyService.Get<HomePageViewModel>();
+            //BindingContext = DependencyService.Get<RattingBarViewModal>();
 
-		private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-		{
-			try
-			{
-				await Navigation.PushAsync(new HospitalVisitPage());
-
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-
-				await DisplayAlert("Oops !", "Something went wrong please try again", "Ok");
-			}
-		}
-	}
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            //return true
+        }
+    }
 }
