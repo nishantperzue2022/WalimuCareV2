@@ -6,7 +6,6 @@ using WalimuCareApp.ViewModels;
 using WalimuCareApp.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WalimuCareApp
 {
@@ -23,13 +22,13 @@ namespace WalimuCareApp
 
             SetApiDetails();
 
-            RegisterDependencyModels();      
+            RegisterDependencyModels();
 
             var accessToken = Preferences.Get("accessToken", string.Empty);
 
             var memberNo = Preferences.Get("memberName", string.Empty);
 
-            //MainPage = new NavigationPage(new Covid19Page());
+            //MainPage = new NavigationPage(new FAQPage());
 
             if (string.IsNullOrEmpty(memberNo))
             {

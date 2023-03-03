@@ -164,6 +164,14 @@
             Route="Covid19Page" 
             ContentTemplate="{DataTemplate local:Covid19Page}" />
     </FlyoutItem>
+
+    <FlyoutItem 
+        Title="FAQs" 
+        Icon="faqs.png">
+        <ShellContent 
+            Route="ItemsPage" 
+            ContentTemplate="{DataTemplate local:FAQPage}" />
+    </FlyoutItem>
     <!--<FlyoutItem 
         Title="FAQs" 
         Icon="faqs.png">

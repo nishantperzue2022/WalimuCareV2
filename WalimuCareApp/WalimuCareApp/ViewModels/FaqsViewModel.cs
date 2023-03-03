@@ -1,78 +1,100 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Text;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using WalimuCareApp.ApiResponses;
 using WalimuCareApp.Models;
+using WalimuCareApp.Utils;
+using Xamarin.Forms;
 
 namespace WalimuCareApp.ViewModels
 {
-	public class FaqsViewModel : ObservableCollection<JobClassModel>, INotifyPropertyChanged
-	{
-		private bool _expanded;
-		public string Title { get; set; }
-		public string ShortName { get; set; }
+    public class FaqsViewModel :AppViewModel
+    {
+        private List<FAQ> myFAQs;
+        public List<FAQ> MyFAQs
+        {
+            get { return myFAQs; }
 
-		public bool Expanded
-		{
-			get { return _expanded; }
-			set
-			{
-				if (_expanded != value)
-				{
-					_expanded = value;
+            set { myFAQs = value; OnPropertyChanged(); }
+        }
 
-					OnPropertyChanged("Expanded");
+        private List<FaqBase> faqBases;
+        public List<FaqBase> FaqBases
+        {
+            get { return faqBases; }
 
-					OnPropertyChanged("StateIcon");
-				}
+            set { faqBases = value; OnPropertyChanged(); }
+        }
 
-			}
-		}
+        public ICommand GetFaqsCommand { get; set; }
 
-		public string StateIcon
-		{
-			get { return Expanded ? "expand_iCon.png" : "collapsed_icon.png"; }
-		}
-		public int JobItems { get; set; }
+        public FaqsViewModel()
+        {
+            GetFaqsCommand = new Command(async () => await GetFaqs());
 
-		public FaqsViewModel(string title, bool expanded = false)
-		{
-			Title = title;
+            Task.Run(async () =>
+            {
+                await GetFaqs();
+            });
+        }
 
-			Expanded = expanded;
-		}
+        public async Task GetFaqs()
+        {
+            try
+            {
+                var client = new HttpClient();
 
-		public static ObservableCollection<FaqsViewModel> Contents { private set; get; }
-		static FaqsViewModel()
-		{
-			ObservableCollection<FaqsViewModel> Items = new ObservableCollection<FaqsViewModel>
-			{
-				new FaqsViewModel("Description")
-				{
-					new JobClassModel{Description= "Tegla Chepkite Loroupe is a Kenyan long-distance track and road runner. She is also a global spokeswoman for peace, women's rights and education. Loroupe holds the world records for 25 and 30 kilometers and previously held the world marathon",}
-				},
-				new FaqsViewModel("Background")
-				{
-					new JobClassModel{Description= "Tegla Chepkite Loroupe is a Kenyan long-distance track and road runner. She is also a global spokeswoman for peace, women's rights and education. Loroupe holds the world records for 25 and 30 kilometers and previously held the world marathon",}
-				},
-				new FaqsViewModel("Experience")
-				{
-					new JobClassModel{Description= "Tegla Chepkite Loroupe is a Kenyan long-distance track and road runner. She is also a global spokeswoman for peace, women's rights and education. Loroupe holds the world records for 25 and 30 kilometers and previously held the world marathon",}
-				},
-				new FaqsViewModel("Education")
-				{
-					new JobClassModel{Description= "Tegla Chepkite Loroupe is a Kenyan long-distance track and road runner. She is also a global spokeswoman for peace, women's rights and education. Loroupe holds the world records for 25 and 30 kilometers and previously held the world marathon",}
-				},
-			};
-			Contents = Items;
-		}
+                if (await CheckInternetConnectivity())
+                {
+                    if (!await CheckIfApiDetailsAreSetUp())
+                    {
 
-		public event PropertyChangedEventHandler PropertyChanged;
+                    }
+                    else
+                    {
+                        IsRefreshing = true;
 
-		protected virtual void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
+                        await Task.Delay(2000);
+
+                        FaqBases = new List<FaqBase>();
+
+                        await ShowLoadingMessage();               
+
+                        HttpResponseMessage getData = await client.GetAsync(MaklAPI.PublicEndPoint + "Complaints/GetFAQs");
+
+                        if (getData.IsSuccessStatusCode)
+                        {
+                            string results = getData.Content.ReadAsStringAsync().Result;
+
+                            var deserializedResponse = JsonConvert.DeserializeObject<BaseResponse<List<FaqBase>>>(results);
+
+                            if (deserializedResponse.success)
+                            {
+                                FaqBases = deserializedResponse.data;
+                                await RemoveLoadingMessage();
+                            }
+                            else
+                            {
+                                await ShowErrorMessage("Sorry, no FAQs were found");
+                            }
+                        }
+                        else
+                        {
+                            await ShowErrorMessage();
+                        }
+                    }
+                }
+
+                IsRefreshing = false;
+            }
+            catch (Exception ex)
+            {
+                SendErrorMessageToAppCenter(ex, "FAQ");
+            }
+        }
+    }
 }
