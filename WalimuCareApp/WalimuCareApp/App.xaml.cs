@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using WalimuCareApp.Services;
+using WalimuCareApp.Utils;
 using WalimuCareApp.ViewModels;
 using WalimuCareApp.Views;
 using Xamarin.Essentials;
@@ -14,11 +16,15 @@ namespace WalimuCareApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            XF.Material.Forms.Material.Init(this);
+
+            SetApiDetails();
+
+            RegisterDependencyModels();      
 
             var accessToken = Preferences.Get("accessToken", string.Empty);
 
-            MainPage = new NavigationPage(new ResetPinPage());
+            MainPage = new NavigationPage(new WelcomeScreenPage());
 
             //if (string.IsNullOrEmpty(accessToken))
             //{
@@ -49,7 +55,21 @@ namespace WalimuCareApp
 
             DependencyService.Register<Covid19ViewModel>();
 
+            DependencyService.Register<MockDataStore>();
+        }
 
+        public void SetApiDetails()
+        {
+            if (Debugger.IsAttached)
+            {
+                ApiDetail.EndPoint = ApiDetail.LocalEndPoint;
+            }
+            else
+            {
+                //means we are on production
+                ApiDetail.EndPoint = ApiDetail.PublicEndPoint;
+                //ApiDetail.EndPoint = ApiDetail.LocalEndPoint;
+            }
         }
     }
 }
