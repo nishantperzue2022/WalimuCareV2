@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderer:CustomContentPageRenderer
+                                              xmlns:customrenderer="clr-namespace:WalimuCareApp.CustomRenderer"
+                                              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                                              xmlns="http://xamarin.com/schemas/2014/forms"
+                                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                                              x:Class="WalimuCareApp.Views.SelectedBlogPage">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding SelectedBlog.TrimmedTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout
+                Margin="0,0,0,-7"
+                Padding="10"
+                BackgroundColor="Red"
+                HeightRequest="70"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+
+                <Image
+                    Margin="10,0,0,0"
+                    HeightRequest="20"
+                    HorizontalOptions="Start"
+                    Source="backbutton.png"
+                    VerticalOptions="CenterAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackButtonCommand}" CommandParameter="BlogArticles" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label
+                    Margin="10,0,0,0"
+                    FontSize="20"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="Wellness Blog"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+            </StackLayout>
+
+
+            <ScrollView VerticalOptions="StartAndExpand">
+                <StackLayout
+                    Margin="0"
+                    Spacing="0"
+                    VerticalOptions="StartAndExpand">
+
+                    <ffimageloading:CachedImage
+                        Margin="0,-30,0,0"
+                        CacheDuration="90"
+                        DownsampleToViewSize="True"
+                        HeightRequest="250"
+                        RetryCount="10"
+                        RetryDelay="600"
+                        Source="{Binding SelectedBlog.imgUrl}"
+                        VerticalOptions="StartAndExpand" />
+
+                    <Label
+                        Padding="15,0,15,0"
+                        FontSize="Large"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="{Binding SelectedBlog.title}"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+
+                    <Grid
+                        Margin="15,0,15,0"
+                        ColumnDefinitions="0.5*,0.5*"
+                        ColumnSpacing="0"
+                        VerticalOptions="Start">
+
+                        <Label
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource MedBookLabelNormal}"
+                            Text="{Binding SelectedBlog.createDate, StringFormat='{0:dd-MMM-yyyy}'}"
+                            VerticalTextAlignment="Center" />
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="EndAndExpand"
+                            Orientation="Horizontal">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="EndAndExpand"
+                                Source="avator"
+                                VerticalOptions="Center" />
+                            <Label
+                                HorizontalOptions="EndAndExpand"
+                                Style="{StaticResource MedBookLabelNormal}"
+                                Text="{Binding SelectedBlog.author}"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+
+
+
+                    </Grid>
+
+                    <!--<Label
+                        Padding="15,0,10,10"
+                        FontSize="Medium"
+                        Style="{StaticResource MedBookLabelNormal}"
+                        Text="{Binding SelectedBlog.description}"
+                        TextType="Html"
+                        VerticalOptions="StartAndExpand" />-->
+
+                    <Grid
+                        Padding="5,0,10,10"
+                        HeightRequest="2000"
+                        VerticalOptions="FillAndExpand">
+
+                        <WebView Grid.Row="0" VerticalOptions="FillAndExpand">
+
+                            <WebView.Source>
+                                <HtmlWebViewSource Html="{Binding SelectedBlog.description}" />
+                            </WebView.Source>
+
+                        </WebView>
+                    </Grid>
+
+                    <StackLayout
+                        Padding="15"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="End">
+
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="Center"
+                            Source="shareicon">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShareContentCommand}" CommandParameter="{Binding ShareLink}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            HorizontalOptions="Center"
+                            Style="{StaticResource MedBookLabelNormal}"
+                            Text="Sharing is caring"
+                            VerticalTextAlignment="Center" />
+
+
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                Source="facebookicon">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShareContentCommand}" CommandParameter="{Binding ShareLink}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="instagramicon">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShareContentCommand}" CommandParameter="{Binding ShareLink}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="twittericon">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShareContentCommand}" CommandParameter="{Binding ShareLink}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</customrenderer:CustomContentPageRenderer>

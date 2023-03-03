@@ -75,6 +75,7 @@ namespace WalimuCareApp.ViewModels
                             if (deserializedResponse.success)
                             {
                                 FaqBases = deserializedResponse.data;
+
                                 await RemoveLoadingMessage();
                             }
                             else

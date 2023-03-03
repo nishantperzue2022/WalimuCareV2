@@ -28,7 +28,7 @@ namespace WalimuCareApp
 
             var memberNo = Preferences.Get("memberName", string.Empty);
 
-            //MainPage = new NavigationPage(new FAQPage());
+            //  MainPage = new NavigationPage(new BlogArticles());
 
             if (string.IsNullOrEmpty(memberNo))
             {
@@ -56,6 +56,10 @@ namespace WalimuCareApp
             DependencyService.Register<FaqsViewModel>();
 
             DependencyService.Register<Covid19ViewModel>();
+
+            DependencyService.Register<WellnessBlogViewModel>();
+
+            DependencyService.Register<PolicyLimitsViewModel>();
 
             DependencyService.Register<MockDataStore>();
         }

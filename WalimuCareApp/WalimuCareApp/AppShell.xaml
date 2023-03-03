@@ -172,6 +172,24 @@
             Route="ItemsPage" 
             ContentTemplate="{DataTemplate local:FAQPage}" />
     </FlyoutItem>
+
+    <FlyoutItem 
+        Title="Wellness Blog" 
+        Icon="wellnessblog.png">
+        <ShellContent 
+            Route="BlogArticles" 
+            ContentTemplate="{DataTemplate local:BlogArticles}" />
+    </FlyoutItem>
+    
+    <FlyoutItem 
+        Title="Available Limits"
+        Icon="policylimitsicon.png">
+        <ShellContent 
+            Route="PolicyLimitsPage" 
+            ContentTemplate="{DataTemplate local:PolicyLimitsPage}" />
+    </FlyoutItem>
+
+
     <!--<FlyoutItem 
         Title="FAQs" 
         Icon="faqs.png">

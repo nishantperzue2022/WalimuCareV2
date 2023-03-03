@@ -71,6 +71,8 @@ namespace WalimuCareApp
 
                 Routing.RegisterRoute(nameof(ECardPage), typeof(ECardPage));
 
+                Routing.RegisterRoute(nameof(SelectedBlogPage), typeof(SelectedBlogPage));
+
             }
             catch (Exception ex)
             {
