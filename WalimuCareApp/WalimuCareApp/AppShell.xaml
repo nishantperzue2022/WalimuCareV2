@@ -127,13 +127,13 @@
             ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
 
-    <!--<FlyoutItem 
+    <FlyoutItem 
         Title="Find Hospital"
         Icon="hospitalIcon.png">
         <ShellContent
-            Route="ItemsPage"
-            ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </FlyoutItem>-->
+            Route="FindHospitalPage"
+            ContentTemplate="{DataTemplate local:FindHospitalPage}" />
+    </FlyoutItem>
 
     <FlyoutItem 
         Title="Track Hospital Visits"

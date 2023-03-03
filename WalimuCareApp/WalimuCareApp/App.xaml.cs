@@ -28,7 +28,7 @@ namespace WalimuCareApp
 
             var memberNo = Preferences.Get("memberName", string.Empty);
 
-            //  MainPage = new NavigationPage(new BlogArticles());
+            // MainPage = new NavigationPage(new FindHospitalPage());
 
             if (string.IsNullOrEmpty(memberNo))
             {

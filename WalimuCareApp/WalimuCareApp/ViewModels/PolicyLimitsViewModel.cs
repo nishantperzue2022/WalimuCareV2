@@ -44,6 +44,7 @@ namespace WalimuCareApp.ViewModels
         {
 
             PageTitle = "Policy Limits";
+
             PageSubTitle = "View your available limits and track your utilization";
 
             MemberId = Preferences.Get(nameof(AspNetUsers.memberId), "");
@@ -74,16 +75,19 @@ namespace WalimuCareApp.ViewModels
                         if (!string.IsNullOrEmpty(MemberId))
                         {
                             IsRefreshing = true;
+
                             IsEmptyIllustrationVisible = false;
+
                             NoDataAvailableMessage = "";
+
                             IsListViewVisible = true;
 
                             RestClient client = new RestClient(ApiDetail.EndPoint);
 
-
                             RestRequest restRequest = new RestRequest()
                             {
                                 Method = Method.Get,
+
                                 Resource = "/Members/GetPolicyLimits"
                             };
 
@@ -94,6 +98,7 @@ namespace WalimuCareApp.ViewModels
                             {
 
                                 return await client.ExecuteAsync(restRequest);
+
                             });
 
 
@@ -114,6 +119,7 @@ namespace WalimuCareApp.ViewModels
                                             PolicyDetails policyDetails = new PolicyDetails();
 
                                             policyDetails.benefitName = item.department.name;
+
                                             policyDetails.benefitAmount = item.limit;
 
                                             policyDetails.ChartData = new ObservableCollection<Series>();
@@ -121,12 +127,14 @@ namespace WalimuCareApp.ViewModels
                                             policyDetails.ChartData.Add(new Series()
                                             {
                                                 Name = "Utilized Amount",
+
                                                 Amount = item.utilised_limit
                                             });
 
                                             policyDetails.ChartData.Add(new Series()
                                             {
                                                 Name = "Available Amount",
+
                                                 Amount = item.available_limit
                                             });
 
@@ -141,7 +149,9 @@ namespace WalimuCareApp.ViewModels
                                     {
                                         //await ShowErrorMessage();
                                         IsEmptyIllustrationVisible = true;
+
                                         NoDataAvailableMessage = "Sorry Something went wrong";
+
                                         IsListViewVisible = false;
                                     }
 
@@ -150,7 +160,9 @@ namespace WalimuCareApp.ViewModels
                                 {
                                     //await ShowErrorMessage();
                                     IsEmptyIllustrationVisible = true;
+
                                     NoDataAvailableMessage = "Sorry Something went wrong";
+
                                     IsListViewVisible = false;
                                 }
 
@@ -160,6 +172,7 @@ namespace WalimuCareApp.ViewModels
                             {
 
                                 SendErrorMessageToAppCenter(ex, "Policy Details", MemberNumber, PhoneNumber);
+
                                 Console.WriteLine(ex);
 
                                 //await ShowErrorMessage();
