@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -54,24 +55,29 @@ namespace WalimuCareApp.ViewModels
 
                         await ShowLoadingMessage();
 
-                        RestClient client = new RestClient(ApiDetail.EndPoint);
+                        //RestClient client = new RestClient(ApiDetail.EndPoint);
 
-                        RestRequest restRequest = new RestRequest()
+                        //RestRequest restRequest = new RestRequest()
+                        //{
+                        //    Resource = "/Complaints/GetCovidQuestions",
+
+                        //    Method = Method.Get
+                        //};
+
+                        var client = new HttpClient();
+
+                        HttpResponseMessage getData = await client.GetAsync(MaklAPI.PublicEndPoint + "Complaints/GetCovidQuestions");
+
+                        if (getData.IsSuccessStatusCode)
                         {
-                            Resource = "/Complaints/GetCovidQuestions",
+                            string results = getData.Content.ReadAsStringAsync().Result;
 
-                            Method = Method.Get
-                        };
-
-                        var response = await client.ExecuteAsync(restRequest);
-
-                        if (response.IsSuccessful)
-                        {
-                            var deserializedResponse = JsonConvert.DeserializeObject<BaseResponse<List<Covid19>>>(response.Content);
+                            var deserializedResponse = JsonConvert.DeserializeObject<BaseResponse<List<Covid19>>>(results);
 
                             if (deserializedResponse.success)
                             {
                                 MyCovid19 = deserializedResponse.data;
+
                                 await RemoveLoadingMessage();
                             }
                             else
@@ -86,9 +92,6 @@ namespace WalimuCareApp.ViewModels
 
                     }
                 }
-
-
-
 
                 //MyCovid19 = new List<Covid19>()
                 //{

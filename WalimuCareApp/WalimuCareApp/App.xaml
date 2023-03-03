@@ -361,6 +361,13 @@
                 BasedOn="{StaticResource BaseLabel}"
                 TargetType="Label">
                 <Setter Property="FontFamily" Value="DinotRegular" />
+            </Style>        
+            
+            <Style
+                x:Key="MedBookLabelMedium"
+                BasedOn="{StaticResource BaseLabel}"
+                TargetType="Label">
+                <Setter Property="FontFamily" Value="DinotBold" />
             </Style>
 
             <Style
@@ -380,8 +387,6 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontAttributes" Value="None" />
             </Style>
-
-
 
 
             <Style x:Key="MyContentPageStyle" TargetType="ContentPage">

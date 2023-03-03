@@ -157,7 +157,13 @@
             Route="TelemedicinePage" 
             ContentTemplate="{DataTemplate local:TelemedicinePage}" />
     </FlyoutItem>
-
+    <FlyoutItem 
+        Title="Covid 19" 
+        Icon="covid.png">
+        <ShellContent 
+            Route="Covid19Page" 
+            ContentTemplate="{DataTemplate local:Covid19Page}" />
+    </FlyoutItem>
     <!--<FlyoutItem 
         Title="FAQs" 
         Icon="faqs.png">

@@ -18,13 +18,11 @@ namespace WalimuCareApp.Views
         {
             InitializeComponent();
 
-
             MyCorousels = new List<MyCorousel>()
             {
-
                  new MyCorousel()
                 {
-                     ImageUrl = "claimspreauth.png",
+                    ImageUrl = "claimspreauth.png",
                     Title="Track Hospital Visits",
                     SubTitle="Track your preauth status, policy utilization and hospital visits",
                     PreviousBtnText = "Skip",
@@ -50,7 +48,7 @@ namespace WalimuCareApp.Views
                 },
                    new MyCorousel()
                 {
-                         ImageUrl = "telemedicineNew.png",
+                    ImageUrl = "telemedicineNew.png",
                     Title="Video Telemedicine",
                     SubTitle="Video consult or chat with top doctors online from the comfort of your phone",
                     PreviousBtnText = "Back",
@@ -93,8 +91,6 @@ namespace WalimuCareApp.Views
                     {
                         corouselView.Position = position;
                     }
-
-
                 }
 
             }

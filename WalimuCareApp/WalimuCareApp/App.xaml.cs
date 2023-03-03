@@ -14,7 +14,10 @@ namespace WalimuCareApp
     {
         public App()
         {
+
             InitializeComponent();
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTI0Nzg0MkAzMjMwMmUzNDJlMzBHZS9Cdnl2ZHRKY3dZTmtIQnlJNDEzamJiK21nakxBbXRrUnFZd1p1ZHFjPQ==\r\n");
 
             XF.Material.Forms.Material.Init(this);
 
@@ -24,27 +27,27 @@ namespace WalimuCareApp
 
             var accessToken = Preferences.Get("accessToken", string.Empty);
 
-            MainPage = new NavigationPage(new WelcomeScreenPage());
+            var memberNo = Preferences.Get("memberName", string.Empty);
 
-            //if (string.IsNullOrEmpty(accessToken))
-            //{
-            //    MainPage = new NavigationPage(new LoginPage());
-            //}
-            //else
-            //{
-            //    MainPage = new AppShell();
+            //MainPage = new NavigationPage(new Covid19Page());
 
-            //}
+            if (string.IsNullOrEmpty(memberNo))
+            {
+                MainPage = new NavigationPage(new WelcomeScreenPage());
+            }
+            else
+            {
+                MainPage = new LoginPage();
+
+            }
         }
 
         protected override void OnStart()
         {
         }
-
         protected override void OnSleep()
         {
         }
-
         protected override void OnResume()
         {
         }

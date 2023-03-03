@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<rg:PopupPage
-    xmlns:rg="http://rotorgames.com"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WalimuCareApp.Views.MessageBoxPage">
+<popup:PopupPage 
+                
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="WalimuCareApp.Views.MessageBoxPage">
 
     <Grid HeightRequest="265" VerticalOptions="End">
         <Grid.RowDefinitions>
@@ -22,6 +24,11 @@
             </Grid>
 
         </Frame>
-        <Button Grid.Row="1" Text="Continue" TextColor="White" HeightRequest="45" BackgroundColor="#E10555" Clicked="Button_Clicked"></Button>
+        <Button Grid.Row="1" 
+                Text="Continue"
+                TextColor="White" 
+                HeightRequest="45" 
+                BackgroundColor="#E10555"
+                Clicked="Button_Clicked"></Button>
     </Grid>
-</rg:PopupPage>
+</popup:PopupPage>

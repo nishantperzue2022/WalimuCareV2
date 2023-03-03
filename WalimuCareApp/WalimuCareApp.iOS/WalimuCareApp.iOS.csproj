@@ -129,6 +129,21 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK-1.0" />
+    <Reference Include="Syncfusion.Core.XForms, Version=20.4451.0.52, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.Core.20.4.0.52\lib\Xamarin.iOS10\Syncfusion.Core.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core.XForms.iOS, Version=20.4451.0.52, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.Core.20.4.0.52\lib\Xamarin.iOS10\Syncfusion.Core.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Expander.XForms, Version=20.4451.0.52, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.Expander.20.4.0.52\lib\Xamarin.iOS10\Syncfusion.Expander.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Expander.XForms.iOS, Version=20.4451.0.52, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.Expander.20.4.0.52\lib\Xamarin.iOS10\Syncfusion.Expander.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=20.4.0.52, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Licensing.20.4.0.52\lib\Xamarin.iOS10\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />

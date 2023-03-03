@@ -2,24 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WalimuCareApp.Views.GettingStartedPage4"
-                 Style="{StaticResource MyContentPageStyle}"
-    Visual="Material">  
+             Style="{StaticResource MyContentPageStyle}"
+             Visual="Material"
+             NavigationPage.HasNavigationBar="False"
 
-
-
+             
+             >  
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="theRealTemplate">
-
                 <Grid RowDefinitions="0.65*,0.35*">
-
                     <Image
                         Grid.Row="0"
                         Grid.RowSpan="2"
                         Aspect="AspectFill"
                         Source="{Binding ImageUrl}" />
-
-
+                    
                     <StackLayout
                         Grid.Row="1"
                         Padding="20"
@@ -47,7 +45,6 @@
 
                             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
 
-
                                 <Button
                                     x:Name="lblSkip"
                                     Padding="0"
@@ -55,10 +52,8 @@
                                     CommandParameter="{Binding PreviousPosition}"
                                     HeightRequest="30"
                                     HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource ButtonWhiteOutlineWhiteText}"
+                                    Style="{StaticResource ButtonOutlinePrimary}"
                                     Text="{Binding PreviousBtnText}" />
-
-
 
                                 <Button
                                     x:Name="lblNext"
@@ -67,19 +62,12 @@
                                     FontSize="15"
                                     HeightRequest="30"
                                     HorizontalOptions="EndAndExpand"
-                                    Style="{x:StaticResource ButtonWhiteBackgroundPrimaryTextColor}"
+                                    Style="{x:StaticResource ButtonOutlinePrimary}"
                                     Text="{Binding NextBtnText}" />
 
-
                             </StackLayout>
-
                         </StackLayout>
-
-
                     </StackLayout>
-
-
-
                 </Grid>
 
 
@@ -168,9 +156,6 @@
                         </Grid>
 
                     </StackLayout>
-
-
-
                 </AbsoluteLayout>-->
             </DataTemplate>
         </ResourceDictionary>
@@ -178,9 +163,7 @@
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
             <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
                 <CarouselView
                     x:Name="corouselView"
                     Margin="0,0,0,0"
@@ -193,7 +176,6 @@
                     ItemTemplate="{StaticResource theRealTemplate}"
                     ItemsSource="{Binding MyCorousels}"
                     VerticalOptions="FillAndExpand" />
-
                 <IndicatorView
                     x:Name="indicatorView"
                     AbsoluteLayout.LayoutBounds="0.12,0.87"
@@ -202,15 +184,7 @@
                     HorizontalOptions="Start"
                     IndicatorColor="White"
                     SelectedIndicatorColor="{StaticResource Primary}" />
-
             </AbsoluteLayout>
-
-
-
-
-
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

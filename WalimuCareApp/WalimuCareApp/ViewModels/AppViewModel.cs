@@ -13,18 +13,20 @@ using WalimuCareApp.Utils;
 using WalimuCareApp.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace WalimuCareApp.ViewModels
 {
     public class AppViewModel : INotifyPropertyChanged
     {
-        //MaterialSnackbarConfiguration snackbarConfiguration = new MaterialSnackbarConfiguration() { BackgroundColor = Color.FromHex("3FAC49"), MessageTextColor = Color.Black, Margin = 0, CornerRadius = 0 };
+        MaterialSnackbarConfiguration snackbarConfiguration = new MaterialSnackbarConfiguration() { BackgroundColor = Color.FromHex("3FAC49"), MessageTextColor = Color.Black, Margin = 0, CornerRadius = 0 };
 
         public AppViewModel()
         {
             try
             {
                 IsRefreshing = false;
+
                 BackButtonCommand = new Command<string>(async x => await BackButton(x));
 
                 RemovePopUpCommand = new Command(async () => await RemoveLoadingMessage());
@@ -32,20 +34,17 @@ namespace WalimuCareApp.ViewModels
                 IsNavBarVisible = false;
 
                 CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
-
             }
             catch (Exception)
             {
 
             }
-
         }
 
         private async void Current_ConnectivityChanged(object sender, Plugin.Connectivity.Abstractions.ConnectivityChangedEventArgs e)
         {
             try
             {
-
                 if (!CrossConnectivity.Current.IsConnected)
                 {
                     await ShowErrorMessage("Please switch on Mobile Data or Connect to a wifi");
@@ -54,8 +53,6 @@ namespace WalimuCareApp.ViewModels
                 {
                     await RemoveLoadingMessage();
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -63,16 +60,14 @@ namespace WalimuCareApp.ViewModels
                 await ShowErrorMessage();
             }
         }
-
         private bool isBusy { get; set; }
-
         public bool IsBusy
         {
-
             get { return isBusy; }
             set
             {
                 isBusy = value;
+
                 OnPropertyChanged(nameof(IsBusy));
             }
         }
@@ -85,6 +80,7 @@ namespace WalimuCareApp.ViewModels
             set
             {
                 enableSubmitBtn = value;
+
                 OnPropertyChanged(nameof(EnableSubmitBtn));
             }
         }
@@ -97,6 +93,7 @@ namespace WalimuCareApp.ViewModels
             set
             {
                 isRefreshing = value;
+
                 OnPropertyChanged(nameof(IsRefreshing));
 
                 Console.WriteLine($"Is Refreshing {IsRefreshing}");
@@ -110,10 +107,10 @@ namespace WalimuCareApp.ViewModels
             set
             {
                 pageTitle = value;
+
                 OnPropertyChanged();
             }
         }
-
 
         private string pageSubTitle;
         public string PageSubTitle
@@ -174,7 +171,6 @@ namespace WalimuCareApp.ViewModels
 
         public async Task ShowErrorMessage(string Message = "")
         {
-
             try
             {
                 await Application.Current.MainPage.Navigation.PopAllPopupAsync();
@@ -183,7 +179,6 @@ namespace WalimuCareApp.ViewModels
             {
                 Console.WriteLine(ex.Message);
             }
-
             try
             {
                 string msg = "Sorry something went wrong, please try again after sometime";
@@ -192,9 +187,7 @@ namespace WalimuCareApp.ViewModels
                 {
                     msg = Message;
                 }
-
-                //await Application.Current.MainPage.Navigation.PushPopupAsync(new AppErrorPage(msg));
-
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new WalimuErrorPage(msg));
             }
             catch (Exception ex)
             {
@@ -213,7 +206,6 @@ namespace WalimuCareApp.ViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-
             }
 
             try
@@ -226,7 +218,6 @@ namespace WalimuCareApp.ViewModels
                 }
 
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new AppSuccessPage(msg));
-
 
                 //await MaterialDialog.Instance.SnackbarAsync(msg, 7000 , snackbarConfiguration);
 
@@ -281,7 +272,6 @@ namespace WalimuCareApp.ViewModels
 
         public async Task ShowInfoMessage(string Message = "")
         {
-
             try
             {
                 await Application.Current.MainPage.Navigation.PopAllPopupAsync();
@@ -289,7 +279,6 @@ namespace WalimuCareApp.ViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-
             }
 
             try
@@ -301,7 +290,7 @@ namespace WalimuCareApp.ViewModels
                     msg = Message;
                 }
 
-                //await Application.Current.MainPage.Navigation.PushPopupAsync(new AppInfoPage(msg));
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new WalimuInfoPage(msg));
 
             }
             catch (Exception ex)
@@ -316,7 +305,6 @@ namespace WalimuCareApp.ViewModels
         {
             try
             {
-
                 if (App.Current.MainPage.Navigation.NavigationStack.Count > 0)
                 {
                     await App.Current.MainPage.Navigation.PopAllPopupAsync();
@@ -325,7 +313,6 @@ namespace WalimuCareApp.ViewModels
             }
             catch (Exception ex)
             {
-
                 SendErrorMessageToAppCenter(ex, "App View Model", "", "");
             }
         }
@@ -405,7 +392,6 @@ namespace WalimuCareApp.ViewModels
         {
             try
             {
-
 
                 //var count =  Shell.Current.Navigation.NavigationStack.Count;
 
@@ -521,8 +507,6 @@ namespace WalimuCareApp.ViewModels
 
             try
             {
-
-
                 var storageReadStatus = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
 
                 var storageWriteStatus = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
@@ -530,7 +514,6 @@ namespace WalimuCareApp.ViewModels
                 PermissionStatus storageReadIsAllowed = PermissionStatus.Denied;
 
                 PermissionStatus storageWriteIsAllowed = PermissionStatus.Denied;
-
 
                 if (storageReadStatus == PermissionStatus.Denied)
                 {
