@@ -23,6 +23,9 @@ namespace WalimuCareApp.Views
             this.BindingContext = new LoginViewModel();
         }
 
+
+
+
         private async void Button_Clicked(object sender, EventArgs e)
         {
 
