@@ -16,7 +16,7 @@ namespace WalimuCareApp
 
             InitializeComponent();
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTI0Nzg0MkAzMjMwMmUzNDJlMzBHZS9Cdnl2ZHRKY3dZTmtIQnlJNDEzamJiK21nakxBbXRrUnFZd1p1ZHFjPQ==\r\n");
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTI0Nzg0MkAzMjMwMmUzNDJlMzBHZS9Cdnl2ZHRKY3dZTmtIQnlJNDEzamJiK21nakxBbXRrUnFZd1p1ZHFjPQ==\r\n");
 
             XF.Material.Forms.Material.Init(this);
 

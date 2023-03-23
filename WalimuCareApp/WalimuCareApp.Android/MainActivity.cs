@@ -26,11 +26,11 @@ namespace WalimuCareApp.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+            //FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
 
-            var dum = new FFImageLoading.Forms.CachedImage();        
+            //var dum = new FFImageLoading.Forms.CachedImage();        
 
             LoadApplication(new App());
         }

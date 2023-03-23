@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WalimuCareApp.Models;
 using WalimuCareApp.Repositories.UserManagerModule;
-using WalimuCareApp.Utils;
 using WalimuCareApp.ViewModels;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,9 +15,6 @@ namespace WalimuCareApp.Views
 
             this.BindingContext = new LoginViewModel();
         }
-
-
-
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
